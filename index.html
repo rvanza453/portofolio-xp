@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revanza's Portfolio - Windows XP Edition</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="desktop">
+        </div>
+
+    <div id="taskbar">
+        <div id="start-button">
+            <img src="assets/images/start-logo.png" alt="Start">
+            <span>start</span>
+        </div>
+        <div id="taskbar-apps">
+            </div>
+        <div id="system-tray">
+            <span id="clock">9:03 AM</span>
+        </div>
+    </div>
+
+    <template id="window-template">
+        <div class="window">
+            <div class="title-bar">
+                <span class="title">Window Title</span>
+                <div class="title-bar-buttons">
+                    <button class="minimize"></button>
+                    <button class="maximize"></button>
+                    <button class="close"></button>
+                </div>
+            </div>
+            <div class="content">
+                <p>Ini adalah konten window.</p>
+            </div>
+        </div>
+    </template>
+
+    <script src="script.js"></script>
+</body>
+</html>
