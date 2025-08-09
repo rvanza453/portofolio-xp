@@ -136,3 +136,21 @@ body {
     margin: 5px;
     overflow-y: auto;
 }
+
+/* --- Loading Spinner --- */
+.loader {
+    position: absolute;
+    border: 4px solid #f3f3f3; /* Light grey */
+    border-top: 4px solid var(--xp-blue); /* XP Blue */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    z-index: 1100; /* Pastikan di atas elemen lain */
+}
+
+/* Animasi untuk berputar */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

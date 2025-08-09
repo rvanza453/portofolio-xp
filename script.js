@@ -45,34 +45,52 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Fungsi untuk membuka jendela baru
+    // Fungsi untuk membuka jendela baru (VERSI BARU DENGAN LOADING)
     function openWindow(appId) {
         const app = apps[appId];
-        const windowClone = windowTemplate.content.cloneNode(true);
-        const newWindow = windowClone.querySelector('.window');
 
-        // Atur Z-Index
-        highestZIndex++;
-        newWindow.style.zIndex = highestZIndex;
+        // --- BAGIAN BARU: Membuat dan menampilkan loader ---
+        const loader = document.createElement('div');
+        loader.className = 'loader';
+        // Posisi acak agar tidak selalu di tengah
+        loader.style.top = `${Math.random() * 200 + 150}px`;
+        loader.style.left = `${Math.random() * 300 + 100}px`;
+        desktop.appendChild(loader);
 
-        // Atur posisi acak agar tidak menumpuk
-        newWindow.style.top = `${Math.random() * 100 + 50}px`;
-        newWindow.style.left = `${Math.random() * 200 + 100}px`;
+        // Mensimulasikan waktu loading (misal: 1000ms = 1 detik)
+        setTimeout(() => {
+            // Hapus loader dari desktop
+            loader.remove();
 
-        // Isi konten jendela
-        newWindow.querySelector('.title').textContent = app.title;
-        newWindow.querySelector('.content').innerHTML = app.content;
-        
-        // Tambahkan event listener untuk tombol close dan drag
-        newWindow.querySelector('.close').addEventListener('click', () => newWindow.remove());
-        
-        // Bawa ke depan saat diklik
-        newWindow.addEventListener('mousedown', () => {
-             highestZIndex++;
-             newWindow.style.zIndex = highestZIndex;
-        });
+            // --- Kode lama Anda untuk membuat window dimulai dari sini ---
+            const windowClone = windowTemplate.content.cloneNode(true);
+            const newWindow = windowClone.querySelector('.window');
 
-        makeDraggable(newWindow);
-        desktop.appendChild(newWindow);
+            // Atur Z-Index
+            highestZIndex++;
+            newWindow.style.zIndex = highestZIndex;
+
+            // Atur posisi acak agar tidak menumpuk
+            newWindow.style.top = `${Math.random() * 100 + 50}px`;
+            newWindow.style.left = `${Math.random() * 200 + 100}px`;
+
+            // Isi konten jendela
+            newWindow.querySelector('.title').textContent = app.title;
+            newWindow.querySelector('.content').innerHTML = app.content;
+            
+            // Tambahkan event listener untuk tombol close dan drag
+            newWindow.querySelector('.close').addEventListener('click', () => newWindow.remove());
+            
+            // Bawa ke depan saat diklik
+            newWindow.addEventListener('mousedown', () => {
+                highestZIndex++;
+                newWindow.style.zIndex = highestZIndex;
+            });
+
+            makeDraggable(newWindow);
+            desktop.appendChild(newWindow);
+
+        }, 1000); // Tunggu 1 detik sebelum jendela muncul
     }
 
     // Fungsi untuk membuat jendela bisa di-drag
