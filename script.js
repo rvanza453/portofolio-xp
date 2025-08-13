@@ -44,53 +44,132 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Fungsi untuk membuka jendela baru
-    // Fungsi untuk membuka jendela baru (VERSI BARU DENGAN LOADING)
+    // Ganti fungsi openWindow di dalam file script.js Anda
+
     function openWindow(appId) {
         const app = apps[appId];
+        const taskbarApps = document.getElementById('taskbar-apps');
 
-        // --- BAGIAN BARU: Membuat dan menampilkan loader ---
-        const loader = document.createElement('div');
-        loader.className = 'loader';
-        // Posisi acak agar tidak selalu di tengah
-        loader.style.top = `${Math.random() * 200 + 150}px`;
-        loader.style.left = `${Math.random() * 300 + 100}px`;
-        desktop.appendChild(loader);
+        // Cek apakah sudah ada window untuk aplikasi ini
+        const existingWindow = document.querySelector(`.window[data-app-id="${appId}"]`);
+        if (existingWindow) {
+            // Jika ada dan tersembunyi (minimized), tampilkan kembali
+            if (existingWindow.style.display === 'none') {
+                existingWindow.style.display = 'flex';
+            }
+            // Bawa ke depan
+            highestZIndex++;
+            existingWindow.style.zIndex = highestZIndex;
+            return; // Hentikan fungsi agar tidak membuat window baru
+        }
+        
+        const windowClone = windowTemplate.content.cloneNode(true);
+        const newWindow = windowClone.querySelector('.window');
+        newWindow.dataset.appId = appId; // Tambahkan ID aplikasi ke elemen window
 
-        // Mensimulasikan waktu loading (misal: 1000ms = 1 detik)
-        setTimeout(() => {
-            // Hapus loader dari desktop
-            loader.remove();
+        // Atur Z-Index
+        highestZIndex++;
+        newWindow.style.zIndex = highestZIndex;
 
-            // --- Kode lama Anda untuk membuat window dimulai dari sini ---
-            const windowClone = windowTemplate.content.cloneNode(true);
-            const newWindow = windowClone.querySelector('.window');
+        // Atur posisi acak
+        const top = Math.random() * 50 + 20;
+        const left = Math.random() * 150 + 50;
+        newWindow.style.top = `${top}px`;
+        newWindow.style.left = `${left}px`;
+        
+        // Simpan posisi dan ukuran awal untuk restore
+        newWindow.dataset.originalTop = newWindow.style.top;
+        newWindow.dataset.originalLeft = newWindow.style.left;
+        newWindow.dataset.originalWidth = newWindow.style.width;
+        newWindow.dataset.originalHeight = newWindow.style.height;
 
-            // Atur Z-Index
+        // Isi konten jendela
+        newWindow.querySelector('.title').textContent = app.title;
+        newWindow.querySelector('.content').innerHTML = app.content;
+
+        // --- LOGIKA TOMBOL WINDOW ---
+
+        const closeBtn = newWindow.querySelector('.close');
+        const maximizeBtn = newWindow.querySelector('.maximize');
+        const minimizeBtn = newWindow.querySelector('.minimize');
+        const titleBar = newWindow.querySelector('.title-bar');
+
+        // 1. Tombol Close
+        closeBtn.addEventListener('click', () => {
+            newWindow.remove();
+            const taskbarButton = document.querySelector(`.taskbar-btn[data-app-id="${appId}"]`);
+            if (taskbarButton) {
+                taskbarButton.remove();
+            }
+        });
+        
+        // 2. Tombol Maximize / Restore
+        maximizeBtn.addEventListener('click', () => {
+            const isMaximized = newWindow.classList.toggle('maximized');
+            maximizeBtn.classList.toggle('restore', isMaximized); // Tambah/hapus class 'restore'
+            
+            if (isMaximized) {
+                // Simpan posisi & ukuran sebelum maximize
+                newWindow.dataset.originalTop = newWindow.style.top;
+                newWindow.dataset.originalLeft = newWindow.style.left;
+                newWindow.dataset.originalWidth = newWindow.style.width;
+                newWindow.dataset.originalHeight = newWindow.style.height;
+                // Set ke ukuran penuh
+                newWindow.style.top = '0px';
+                newWindow.style.left = '0px';
+                // Draggable dinonaktifkan saat maximize
+                titleBar.style.cursor = 'default';
+            } else {
+                // Kembalikan ke posisi & ukuran semula
+                newWindow.style.top = newWindow.dataset.originalTop;
+                newWindow.style.left = newWindow.dataset.originalLeft;
+                // Kembalikan cursor drag
+                titleBar.style.cursor = 'move';
+            }
+        });
+
+        // 3. Tombol Minimize
+        minimizeBtn.addEventListener('click', () => {
+            newWindow.style.display = 'none'; // Sembunyikan window
+        });
+
+        // Bawa ke depan saat diklik
+        newWindow.addEventListener('mousedown', () => {
             highestZIndex++;
             newWindow.style.zIndex = highestZIndex;
+            // Juga aktifkan taskbar buttonnya
+            document.querySelectorAll('.taskbar-btn').forEach(btn => btn.classList.remove('active'));
+            const taskbarButton = document.querySelector(`.taskbar-btn[data-app-id="${appId}"]`);
+            if(taskbarButton) taskbarButton.classList.add('active');
+        });
 
-            // Atur posisi acak agar tidak menumpuk
-            newWindow.style.top = `${Math.random() * 100 + 50}px`;
-            newWindow.style.left = `${Math.random() * 200 + 100}px`;
-
-            // Isi konten jendela
-            newWindow.querySelector('.title').textContent = app.title;
-            newWindow.querySelector('.content').innerHTML = app.content;
+        makeDraggable(newWindow);
+        desktop.appendChild(newWindow);
+        
+        // --- MEMBUAT TOMBOL DI TASKBAR ---
+        const taskbarButton = document.createElement('button');
+        taskbarButton.className = 'taskbar-btn active';
+        taskbarButton.dataset.appId = appId;
+        taskbarButton.innerHTML = `<img src="assets/icons/${app.icon}" alt="${app.title}" /> <span>${app.title}</span>`;
+        
+        // Hapus status aktif dari tombol taskbar lain
+        document.querySelectorAll('.taskbar-btn').forEach(btn => btn.classList.remove('active'));
+        
+        taskbarButton.addEventListener('click', () => {
+            const isHidden = newWindow.style.display === 'none';
+            if (isHidden) {
+                newWindow.style.display = 'flex'; // Tampilkan kembali
+            }
+            // Bawa window ke depan
+            highestZIndex++;
+            newWindow.style.zIndex = highestZIndex;
             
-            // Tambahkan event listener untuk tombol close dan drag
-            newWindow.querySelector('.close').addEventListener('click', () => newWindow.remove());
-            
-            // Bawa ke depan saat diklik
-            newWindow.addEventListener('mousedown', () => {
-                highestZIndex++;
-                newWindow.style.zIndex = highestZIndex;
-            });
+            // Atur status aktif
+            document.querySelectorAll('.taskbar-btn').forEach(btn => btn.classList.remove('active'));
+            taskbarButton.classList.add('active');
+        });
 
-            makeDraggable(newWindow);
-            desktop.appendChild(newWindow);
-
-        }, 1000); // Tunggu 1 detik sebelum jendela muncul
+        taskbarApps.appendChild(taskbarButton);
     }
 
     // Fungsi untuk membuat jendela bisa di-drag
