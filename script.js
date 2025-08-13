@@ -272,43 +272,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Fungsi untuk membuat jendela bisa di-drag
-
     function makeDraggable(element) {
         const titleBar = element.querySelector('.title-bar');
+        let isDragging = false;
         let offsetX, offsetY;
 
-        // Fungsi yang akan dijalankan saat mouse bergerak
-        function onMouseMove(e) {
-            // Nonaktifkan jika window sedang maximized
-            if (element.classList.contains('maximized')) {
-                return;
-            }
-            element.style.left = `${e.clientX - offsetX}px`;
-            element.style.top = `${e.clientY - offsetY}px`;
-        }
-
-        // Fungsi yang akan dijalankan saat mouse dilepas
-        function onMouseUp() {
-            element.style.cursor = 'default';
-            // HENTIKAN event listener saat mouse dilepas
-            document.removeEventListener('mousemove', onMouseMove);
-            document.removeEventListener('mouseup', onMouseUp);
-        }
-
-        // Event utama saat mouse ditekan di title bar
         titleBar.addEventListener('mousedown', (e) => {
-            // Jangan mulai drag jika window maximized
-            if (element.classList.contains('maximized')) {
-                return;
-            }
-
+            isDragging = true;
             offsetX = e.clientX - element.offsetLeft;
             offsetY = e.clientY - element.offsetTop;
             element.style.cursor = 'grabbing';
+        });
 
-            // AKTIFKAN event listener HANYA saat mouse sedang ditekan
-            document.addEventListener('mousemove', onMouseMove);
-            document.addEventListener('mouseup', onMouseUp);
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                element.style.left = `${e.clientX - offsetX}px`;
+                element.style.top = `${e.clientY - offsetY}px`;
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            element.style.cursor = 'default';
         });
     }
 
