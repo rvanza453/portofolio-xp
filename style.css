@@ -126,62 +126,49 @@ body {
     align-items: center;
 }
 
+/* GANTI SELURUH BLOK CSS TOMBOL ANDA DENGAN INI */
+
+/* Aturan umum untuk semua tombol */
 .title-bar-buttons button {
     width: 21px;
     height: 21px;
     border: 1px solid #003c74;
     border-radius: 3px;
     margin-left: 2px;
-    font-size: 0; /* Sembunyikan teks/simbol default */
+    font-size: 0;
     background-repeat: no-repeat;
-    background-position: center; /* Posisikan ikon di tengah tombol */
-    background-color: transparent; /* Hilangkan warna latar belakang */
+    background-position: center;
+    background-color: transparent;
     outline: none;
     cursor: pointer;
-    background-size: contain;
+    background-size: 16px; 
 }
 
 button.minimize {
-    background-image: url('assets/icons/minimize.png');
+    background-image: url('./assets/icons/minimize.png');
 }
 
 button.maximize {
-    background-image: url('assets/icons/fullscreen.png');
+    background-image: url('./assets/icons/fullscreen.png');
 }
 
 button.restore {
-    background-image: url('assets/icons/fullscreen.png'); /* Ganti dengan 'restore.png' jika ada */
+    background-image: url('./assets/icons/fullscreen.png');
 }
 
 button.close {
-    background-image: url('assets/icons/close.png');
+    background-image: url('./assets/icons/close.png');
 }
 
+/* Efek Hover */
 .title-bar-buttons button:hover {
-    filter: brightness(1.2); /* Membuat ikon sedikit lebih terang */
-    background-color: rgba(255, 255, 255, 0.1); /* Memberi sedikit highlight */
+    filter: brightness(1.2);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .title-bar-buttons button:active {
-    filter: brightness(0.9); /* Membuat ikon sedikit lebih gelap saat diklik */
+    filter: brightness(0.9);
 }
-
-button.minimize { background-position: -5px -4px; }
-button.minimize:hover { background-position: -5px -29px; }
-button.minimize:active { background-position: -5px -54px; }
-
-button.maximize { background-position: -30px -4px; }
-button.maximize:hover { background-position: -30px -29px; }
-button.maximize:active { background-position: -30px -54px; }
-
-/* Class untuk tombol restore (saat window dimaksimalkan) */
-button.restore { background-position: -55px -4px; }
-button.restore:hover { background-position: -55px -29px; }
-button.restore:active { background-position: -55px -54px; }
-
-button.close { background-position: -80px -4px; }
-button.close:hover { background-position: -80px -29px; }
-button.close:active { background-position: -80px -54px; }
 
 /* Class untuk window yang termaksimalkan */
 .window.maximized {
