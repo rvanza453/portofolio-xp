@@ -346,3 +346,193 @@ button.close {
     font-style: italic;
     color: #666;
 }
+
+/* ======================================= */
+/* === SKILL BARS (MY_ARSENAL) === */
+/* ======================================= */
+
+.skill-bars-container {
+    margin-top: 15px;
+}
+
+.skill-bar {
+    margin-bottom: 12px;
+}
+
+.skill-name {
+    display: block;
+    margin-bottom: 4px;
+    font-family: 'Tahoma', sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.bar-container {
+    width: 100%;
+    background-color: #dcdcdc; /* Warna latar belakang bar */
+    border: 1px solid #a0a0a0;
+    border-radius: 3px;
+    overflow: hidden; /* Penting untuk radius di bar-fill */
+}
+
+.bar-fill {
+    height: 14px;
+    background: linear-gradient(to bottom, var(--xp-blue-gradient-start), var(--xp-blue-gradient-end)); /* Gradien biru XP */
+    border-radius: 2px;
+    width: 0%; /* Mulai dari 0% */
+    animation: fill-bar 1.5s ease-out forwards;
+    animation-delay: 0.5s; /* Mulai animasi setelah window terbuka */
+    box-shadow: inset 1px 1px 2px rgba(255,255,255,0.3);
+}
+
+/* Animasi pengisian bar */
+@keyframes fill-bar {
+    from {
+        width: 0%;
+    }
+    to {
+        /* Lebar akan diambil dari style inline di HTML */
+    }
+}
+
+/* ======================================= */
+/* === EFEK KUNANG-KUNANG PIXEL (FIREFLY) === */
+/* ======================================= */
+
+.firefly {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 5px; /* Ukuran kunang-kunang */
+    height: 5px;
+    background: #76f1ff; /* Warna cahaya utama */
+    border-radius: 50%;
+    box-shadow: 0 0 5px #76f1ff,
+                0 0 10px #76f1ff,
+                0 0 20px #76f1ff,
+                0 0 40px #03a9f4;
+    animation: animate-firefly 2s linear infinite; /* Animasi dasar */
+}
+
+/* Membuat setiap kunang-kunang memiliki animasi & posisi yang berbeda */
+.firefly:nth-child(1) {
+    animation-name: animate-firefly-1;
+    animation-duration: 40s;
+}
+.firefly:nth-child(2) {
+    animation-name: animate-firefly-2;
+    animation-duration: 35s;
+    width: 3px;
+    height: 3px;
+}
+.firefly:nth-child(3) {
+    animation-name: animate-firefly-3;
+    animation-duration: 50s;
+}
+.firefly:nth-child(4) {
+    animation-name: animate-firefly-4;
+    animation-duration: 42s;
+    width: 4px;
+    height: 4px;
+}
+.firefly:nth-child(5) {
+    animation-name: animate-firefly-1; /* Menggunakan kembali path animasi */
+    animation-duration: 55s;
+    animation-delay: -10s; /* Mulai dari titik berbeda */
+}
+.firefly:nth-child(6) {
+    animation-name: animate-firefly-3;
+    animation-duration: 60s;
+    animation-delay: -5s;
+}
+
+
+/* Keyframes untuk path terbang kunang-kunang */
+/* Ini adalah "jalur" terbang yang sudah ditentukan */
+
+@keyframes animate-firefly-1 {
+    0%   { transform: translate(0, 0) scale(1); opacity: 0.5; }
+    25%  { transform: translate(30vw, -20vh) scale(0.8); opacity: 1; }
+    50%  { transform: translate(10vw, 30vh) scale(1.2); opacity: 0.3; }
+    75%  { transform: translate(-40vw, 10vh) scale(0.7); opacity: 1; }
+    100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+}
+
+@keyframes animate-firefly-2 {
+    0%   { transform: translate(0, 0) scale(1); opacity: 1; }
+    20%  { transform: translate(-25vw, 15vh) scale(0.7); opacity: 0.6; }
+    40%  { transform: translate(20vw, 25vh) scale(1); opacity: 1; }
+    60%  { transform: translate(30vw, -30vh) scale(1.3); opacity: 0.8; }
+    80%  { transform: translate(-10vw, -20vh) scale(0.8); opacity: 1; }
+    100% { transform: translate(0, 0) scale(1); opacity: 1; }
+}
+
+@keyframes animate-firefly-3 {
+    0%   { transform: translate(0, 0) scale(1.1); opacity: 0.7; }
+    33%  { transform: translate(-30vw, -30vh) scale(0.8); opacity: 1; }
+    66%  { transform: translate(40vw, -10vh) scale(1); opacity: 0.5; }
+    100% { transform: translate(0, 0) scale(1.1); opacity: 0.7; }
+}
+
+@keyframes animate-firefly-4 {
+    0%   { transform: translate(0, 0) scale(1); opacity: 0.9; }
+    50%  { transform: translate(20vw, 40vh) scale(0.7); opacity: 1; }
+    100% { transform: translate(0, 0) scale(1); opacity: 0.9; }
+}
+
+/* ======================================= */
+/* === EFEK CLIPPY'S GHOST === */
+/* ======================================= */
+
+#clippy-ghost {
+    position: absolute;
+    bottom: -200px; /* Mulai dari posisi tersembunyi di bawah layar */
+    right: 50px;
+    width: 150px; /* Ukuran Clippy */
+    height: 150px;
+    background-image: url('./assets/images/clippy.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0; /* Mulai dengan transparan total */
+    z-index: 999; /* Pastikan di atas kunang-kunang tapi di bawah window */
+
+    /* Atur animasi utama */
+    animation: clippy-peek 25s ease-in-out infinite;
+    animation-delay: 10s; /* Muncul pertama kali setelah 10 detik */
+}
+
+/* Keyframes untuk animasi Clippy */
+@keyframes clippy-peek {
+    /* Muncul perlahan dari bawah */
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+    5% {
+        transform: translateY(-160px); /* Bergerak ke atas */
+        opacity: 0.8; /* Muncul */
+    }
+
+    /* Diam sejenak sambil sedikit bergoyang */
+    10% {
+        transform: translateY(-165px) rotate(-2deg); /* Sedikit miring */
+    }
+    15% {
+        transform: translateY(-160px) rotate(2deg);
+    }
+    20% {
+        transform: translateY(-165px) rotate(0deg);
+    }
+
+    /* Menghilang kembali ke bawah */
+    25% {
+        transform: translateY(0); /* Kembali ke bawah */
+        opacity: 0;
+    }
+
+    /* Tetap tersembunyi untuk sisa durasi */
+    100% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+}

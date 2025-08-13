@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <img src="./assets/images/foto-profil.jpg" alt="Foto Profil Revanza" class="profile-pic">
                             <div class="profile-title">
                                 <h1>Muhammad Revanza</h1>
-                                <p>Full-Stack Enthusiast | Problem Solver</p>
+                                <p>Web & Mobile Developer | Problem Solver</p>
                             </div>
                         </div>
 
@@ -23,8 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
                             <fieldset>
                                 <legend>i am()</legend>
                                 <p class="typing-effect">
-                                    Lulusan Informatika UPN "Veteran" Jatim (IPK 3.86) dengan hasrat tinggi pada pengembangan perangkat lunak. Pengalaman saya sebagai Ketua OSIS membentuk saya menjadi pribadi yang terstruktur dan andal dalam memecahkan masalah. Saya percaya setiap baris kode adalah langkah untuk menciptakan solusi yang berdampak.
-                                </p>
+    Saya adalah lulusan Cum Laude dari program studi Informatika UPN "Veteran" Jawa Timur dengan IPK 3.86. Sejak awal, saya memiliki ketertarikan yang mendalam pada pengembangan perangkat lunak, khususnya pada Web Development menggunakan framework Laravel dan Mobile Development dengan Kotlin Native. Bagi saya, coding bukan hanya tentang menulis perintah, tetapi tentang merakit solusi.
+
+    Puncak dari perjalanan kuliah S1 saya adalah proyek skripsi, Sistem Rekognisi Pembelajaran Lampau Alih Jenjang (E-RPL). Saya bangga bahwa proyek ini bukan hanya sekadar tugas akhir, tetapi juga diimplementasikan dan digunakan oleh PJM LPMPP Universitas Trunojoyo Madura (UTM) untuk menyederhanakan proses asesmen mereka. Kebermanfaatan nyata dari proyek inilah yang menjadi pencapaian terbaik saya sejauh ini, membuktikan bahwa kode yang saya tulis dapat memberikan dampak positif.
+
+    Fondasi kepemimpinan dan kemampuan memecahkan masalah saya terbentuk saat menjabat sebagai Ketua OSIS semasa SMA. Pengalaman tersebut mengajari saya untuk berpikir secara terstruktur, merencanakan setiap langkah, dan andal dalam menghadapi tantangan—sebuah keahlian yang kini saya terapkan dalam merancang alur kerja perangkat lunak yang efisien.                                </p>
                             </fieldset>
                         </div>
 
@@ -45,8 +48,55 @@ document.addEventListener('DOMContentLoaded', () => {
                                     </div>
                                 </div>
                                 <p class="skills-list">
-                                    <strong>Lainnya:</strong> PHP, C++, Python, SQL, HTML, CSS, Figma.
+                                    <strong>Skill Lainnya:</strong> PHP, C++, Python, SQL, HTML, CSS, Figma.
                                 </p>
+                                <p>Berikut adalah tingkat keahlian saya dalam beberapa teknologi:</p>
+                                
+                                <div class="skill-bars-container">
+                                    <div class="skill-bar">
+                                        <span class="skill-name">Laravel</span>
+                                        <div class="bar-container">
+                                            <div class="bar-fill" style="width: 90%;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <span class="skill-name">Kotlin Native</span>
+                                        <div class="bar-container">
+                                            <div class="bar-fill" style="width: 85%;"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="skill-bar">
+                                        <span class="skill-name">PHP</span>
+                                        <div class="bar-container">
+                                            <div class="bar-fill" style="width: 80%;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <span class="skill-name">SQL</span>
+                                        <div class="bar-container">
+                                            <div class="bar-fill" style="width: 75%;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <span class="skill-name">HTML & CSS</span>
+                                        <div class="bar-container">
+                                            <div class="bar-fill" style="width: 88%;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <span class="skill-name">Figma</span>
+                                        <div class="bar-container">
+                                            <div class="bar-fill" style="width: 70%;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <span class="skill-name">C++ & Python</span>
+                                        <div class="bar-container">
+                                            <div class="bar-fill" style="width: 60%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </fieldset>
                         </div>
                         
@@ -54,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <fieldset>
                                 <legend>philosophy.txt</legend>
                                 <p>
-                                    Saya tidak membatasi diri pada satu bidang. Dari web, mobile, hingga UI/UX, saya selalu haus akan pengetahuan baru. Bagi saya, belajar adalah sebuah petualangan tanpa akhir.
+                                    Saya antusias untuk memulai karier sebagai seorang programmer, baik di bidang web, mobile, maupun sebagai bagian dari tim IT. Namun, saya percaya bahwa proses belajar tidak pernah berhenti. Saya selalu terbuka untuk mengeksplorasi hal-hal baru, termasuk Machine Learning, Data Analis, Jaringan dan lainnya, karena saya yakin setiap baris kode dan setiap elemen desain adalah langkah untuk menciptakan solusi yang lebih baik.
                                 </p>
                             </fieldset>
                         </div>
@@ -222,28 +272,43 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Fungsi untuk membuat jendela bisa di-drag
+
     function makeDraggable(element) {
         const titleBar = element.querySelector('.title-bar');
-        let isDragging = false;
         let offsetX, offsetY;
 
+        // Fungsi yang akan dijalankan saat mouse bergerak
+        function onMouseMove(e) {
+            // Nonaktifkan jika window sedang maximized
+            if (element.classList.contains('maximized')) {
+                return;
+            }
+            element.style.left = `${e.clientX - offsetX}px`;
+            element.style.top = `${e.clientY - offsetY}px`;
+        }
+
+        // Fungsi yang akan dijalankan saat mouse dilepas
+        function onMouseUp() {
+            element.style.cursor = 'default';
+            // HENTIKAN event listener saat mouse dilepas
+            document.removeEventListener('mousemove', onMouseMove);
+            document.removeEventListener('mouseup', onMouseUp);
+        }
+
+        // Event utama saat mouse ditekan di title bar
         titleBar.addEventListener('mousedown', (e) => {
-            isDragging = true;
+            // Jangan mulai drag jika window maximized
+            if (element.classList.contains('maximized')) {
+                return;
+            }
+
             offsetX = e.clientX - element.offsetLeft;
             offsetY = e.clientY - element.offsetTop;
             element.style.cursor = 'grabbing';
-        });
 
-        document.addEventListener('mousemove', (e) => {
-            if (isDragging) {
-                element.style.left = `${e.clientX - offsetX}px`;
-                element.style.top = `${e.clientY - offsetY}px`;
-            }
-        });
-
-        document.addEventListener('mouseup', () => {
-            isDragging = false;
-            element.style.cursor = 'default';
+            // AKTIFKAN event listener HANYA saat mouse sedang ditekan
+            document.addEventListener('mousemove', onMouseMove);
+            document.addEventListener('mouseup', onMouseUp);
         });
     }
 
