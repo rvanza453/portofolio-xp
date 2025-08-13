@@ -9,7 +9,56 @@ document.addEventListener('DOMContentLoaded', () => {
         'my-computer': {
             title: "Tentang Saya",
             icon: "my-computer.png",
-            content: `<h1>Revanza</h1><p>Saya adalah seorang lulusan Teknik Informatika yang bersemangat dalam pengembangan web dan pemecahan masalah. Saya memiliki pengalaman dengan teknologi modern seperti JavaScript, Laravel, dan React, dan selalu antusias untuk belajar hal baru.</p>`
+            content: `
+                    <div class="profile-container">
+                        <div class="profile-header">
+                            <img src="./assets/images/foto-profil.jpg" alt="Foto Profil Revanza" class="profile-pic">
+                            <div class="profile-title">
+                                <h1>Muhammad Revanza</h1>
+                                <p>Full-Stack Enthusiast | Problem Solver</p>
+                            </div>
+                        </div>
+
+                        <div class="profile-section">
+                            <fieldset>
+                                <legend>i am()</legend>
+                                <p class="typing-effect">
+                                    Lulusan Informatika UPN "Veteran" Jatim (IPK 3.86) dengan hasrat tinggi pada pengembangan perangkat lunak. Pengalaman saya sebagai Ketua OSIS membentuk saya menjadi pribadi yang terstruktur dan andal dalam memecahkan masalah. Saya percaya setiap baris kode adalah langkah untuk menciptakan solusi yang berdampak.
+                                </p>
+                            </fieldset>
+                        </div>
+
+                        <div class="profile-section">
+                            <fieldset>
+                                <legend>my_arsenal.json</legend>
+                                <p>Spesialisasi utama saya ada di dua dunia:</p>
+                                <div class="skills-grid">
+                                    <div class="skill-item web">
+                                        <i class="icon-laravel"></i>
+                                        <strong>Web Development</strong>
+                                        <span>Laravel</span>
+                                    </div>
+                                    <div class="skill-item mobile">
+                                        <i class="icon-kotlin"></i>
+                                        <strong>Mobile Development</strong>
+                                        <span>Kotlin Native</span>
+                                    </div>
+                                </div>
+                                <p class="skills-list">
+                                    <strong>Lainnya:</strong> PHP, C++, Python, SQL, HTML, CSS, Figma.
+                                </p>
+                            </fieldset>
+                        </div>
+                        
+                        <div class="profile-section">
+                            <fieldset>
+                                <legend>philosophy.txt</legend>
+                                <p>
+                                    Saya tidak membatasi diri pada satu bidang. Dari web, mobile, hingga UI/UX, saya selalu haus akan pengetahuan baru. Bagi saya, belajar adalah sebuah petualangan tanpa akhir.
+                                </p>
+                            </fieldset>
+                        </div>
+                    </div>`,
         },
         'my-documents': {
             title: "Proyek Saya",
