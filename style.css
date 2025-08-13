@@ -377,12 +377,11 @@ button.close {
 
 .bar-fill {
     height: 14px;
-    background: linear-gradient(to bottom, var(--xp-blue-gradient-start), var(--xp-blue-gradient-end)); /* Gradien biru XP */
+    background: linear-gradient(to bottom, var(--xp-blue-gradient-start), var(--xp-blue-gradient-end));
     border-radius: 2px;
     width: 0%; /* Mulai dari 0% */
-    animation: fill-bar 1.5s ease-out forwards;
-    animation-delay: 0.5s; /* Mulai animasi setelah window terbuka */
     box-shadow: inset 1px 1px 2px rgba(255,255,255,0.3);
+    transition: width 1.5s ease-out; /* Kita ganti animasi dengan transisi */
 }
 
 /* Animasi pengisian bar */

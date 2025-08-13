@@ -47,53 +47,64 @@ document.addEventListener('DOMContentLoaded', () => {
                                         <span>Kotlin Native</span>
                                     </div>
                                 </div>
-                                <p class="skills-list">
-                                    <strong>Skill Lainnya:</strong> PHP, C++, Python, SQL, HTML, CSS, Figma.
-                                </p>
-                                <p>Berikut adalah tingkat keahlian saya dalam beberapa teknologi:</p>
+
+                                <p>Berikut adalah tingkat keahlian saya:</p>
                                 
                                 <div class="skill-bars-container">
-                                    <div class="skill-bar">
-                                        <span class="skill-name">Laravel</span>
-                                        <div class="bar-container">
-                                            <div class="bar-fill" style="width: 90%;"></div>
+                                    <div class="skill-bars-container">
+                                        <div class="skill-bar">
+                                            <span class="skill-name">Laravel</span>
+                                            <div class="bar-container">
+                                                <div class="bar-fill" data-target-width="90%"></div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="skill-bar">
-                                        <span class="skill-name">Kotlin Native</span>
-                                        <div class="bar-container">
-                                            <div class="bar-fill" style="width: 85%;"></div>
+                                        <div class="skill-bar">
+                                            <span class="skill-name">Kotlin Native</span>
+                                            <div class="bar-container">
+                                                <div class="bar-fill" data-target-width="85%"></div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    
-                                    <div class="skill-bar">
-                                        <span class="skill-name">PHP</span>
-                                        <div class="bar-container">
-                                            <div class="bar-fill" style="width: 80%;"></div>
+                                        <div class="skill-bar">
+                                            <span class="skill-name">C++</span>
+                                            <div class="bar-container">
+                                                <div class="bar-fill" data-target-width="80%"></div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="skill-bar">
-                                        <span class="skill-name">SQL</span>
-                                        <div class="bar-container">
-                                            <div class="bar-fill" style="width: 75%;"></div>
+                                        <div class="skill-bar">
+                                            <span class="skill-name">PHP</span>
+                                            <div class="bar-container">
+                                                <div class="bar-fill" data-target-width="85%"></div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="skill-bar">
-                                        <span class="skill-name">HTML & CSS</span>
-                                        <div class="bar-container">
-                                            <div class="bar-fill" style="width: 88%;"></div>
+                                        <div class="skill-bar">
+                                            <span class="skill-name">SQL</span>
+                                            <div class="bar-container">
+                                                <div class="bar-fill" data-target-width="90%"></div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="skill-bar">
-                                        <span class="skill-name">Figma</span>
-                                        <div class="bar-container">
-                                            <div class="bar-fill" style="width: 70%;"></div>
+                                        <div class="skill-bar">
+                                            <span class="skill-name">HTML & CSS</span>
+                                            <div class="bar-container">
+                                                <div class="bar-fill" data-target-width="90%"></div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="skill-bar">
-                                        <span class="skill-name">C++ & Python</span>
-                                        <div class="bar-container">
-                                            <div class="bar-fill" style="width: 60%;"></div>
+                                        <div class="skill-bar">
+                                            <span class="skill-name">Figma</span>
+                                            <div class="bar-container">
+                                                <div class="bar-fill" data-target-width="75%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="skill-bar">
+                                            <span class="skill-name">Python</span>
+                                            <div class="bar-container">
+                                                <div class="bar-fill" data-target-width="70%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="skill-bar">
+                                            <span class="skill-name">Excel</span>
+                                            <div class="bar-container">
+                                                <div class="bar-fill" data-target-width="75%"></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -143,8 +154,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Ganti fungsi openWindow di dalam file script.js Anda
-
     function openWindow(appId) {
         const app = apps[appId];
         const taskbarApps = document.getElementById('taskbar-apps');
@@ -152,39 +161,65 @@ document.addEventListener('DOMContentLoaded', () => {
         // Cek apakah sudah ada window untuk aplikasi ini
         const existingWindow = document.querySelector(`.window[data-app-id="${appId}"]`);
         if (existingWindow) {
-            // Jika ada dan tersembunyi (minimized), tampilkan kembali
             if (existingWindow.style.display === 'none') {
                 existingWindow.style.display = 'flex';
             }
-            // Bawa ke depan
             highestZIndex++;
             existingWindow.style.zIndex = highestZIndex;
-            return; // Hentikan fungsi agar tidak membuat window baru
+            return;
         }
         
         const windowClone = windowTemplate.content.cloneNode(true);
         const newWindow = windowClone.querySelector('.window');
-        newWindow.dataset.appId = appId; // Tambahkan ID aplikasi ke elemen window
+        newWindow.dataset.appId = appId;
 
-        // Atur Z-Index
         highestZIndex++;
         newWindow.style.zIndex = highestZIndex;
+        newWindow.style.top = `${Math.random() * 50 + 20}px`;
+        newWindow.style.left = `${Math.random() * 150 + 50}px`;
 
-        // Atur posisi acak
-        const top = Math.random() * 50 + 20;
-        const left = Math.random() * 150 + 50;
-        newWindow.style.top = `${top}px`;
-        newWindow.style.left = `${left}px`;
-        
-        // Simpan posisi dan ukuran awal untuk restore
-        newWindow.dataset.originalTop = newWindow.style.top;
-        newWindow.dataset.originalLeft = newWindow.style.left;
-        newWindow.dataset.originalWidth = newWindow.style.width;
-        newWindow.dataset.originalHeight = newWindow.style.height;
-
-        // Isi konten jendela
         newWindow.querySelector('.title').textContent = app.title;
         newWindow.querySelector('.content').innerHTML = app.content;
+
+        // ▼▼▼ BAGIAN YANG DIPERBAIKI ▼▼▼
+
+        // --- LOGIKA ANIMASI SKILL BAR ON-SCROLL ---
+        const legends = newWindow.querySelectorAll('legend');
+        let arsenalSection = null;
+        // Loop untuk mencari legend yang benar tanpa :contains()
+        for (const legend of legends) {
+            if (legend.textContent.trim() === 'my_arsenal.json') {
+                arsenalSection = legend.parentElement; // Dapatkan fieldset-nya
+                break;
+            }
+        }
+
+        if (arsenalSection) {
+            const skillBars = arsenalSection.querySelectorAll('.bar-fill');
+            const observerOptions = {
+                root: newWindow.querySelector('.content'),
+                rootMargin: '0px',
+                threshold: 0.5
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    // Jika elemen masuk ke viewport
+                    if (entry.isIntersecting) {
+                        // Terapkan width dari "data-target-width" ke setiap bar
+                        skillBars.forEach(bar => {
+                            const targetWidth = bar.dataset.targetWidth; // Baca data-target-width
+                            bar.style.width = targetWidth; // Terapkan sebagai style, ini akan memicu transisi!
+                        });
+                        
+                        // Berhenti mengamati setelah animasi berjalan
+                        observer.unobserve(arsenalSection);
+                    }
+                });
+            }, observerOptions);
+
+            observer.observe(arsenalSection);
+        }
 
         // --- LOGIKA TOMBOL WINDOW ---
 
