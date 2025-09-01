@@ -4,6 +4,83 @@ document.addEventListener('DOMContentLoaded', () => {
     const windowTemplate = document.getElementById('window-template');
     let highestZIndex = 100;
 
+    // --- TAMBAHAN: DATABASE KHUSUS UNTUK PROYEK ---
+    // Kita buat objek terpisah untuk menyimpan semua data proyek.
+    // Ini membuat data lebih rapi dan mudah dikelola.
+    const projects = {
+        'project-erpl': {
+            title: "Sistem E-RPL Universitas Trunojoyo",
+            icon: "my-documents.png",
+            content: `
+                <div class="project-detail">
+                    <h2>Sistem E-RPL Alih Jenjang</h2>
+                    <p><strong>Klien:</strong> PJM LPMPP Universitas Trunojoyo Madura (UTM)</p>
+                    <img src="https://via.placeholder.com/450x250.png?text=Screenshot+Proyek+E-RPL" alt="Screenshot E-RPL" class="project-screenshot">
+                    <h3>Deskripsi</h3>
+                    <p>
+                        Sistem Rekognisi Pembelajaran Lampau (E-RPL) adalah proyek skripsi saya yang berhasil diimplementasikan secara nyata 
+                        di Universitas Trunojoyo Madura. Sistem ini mendukung proses <em>alih jenjang</em> dengan cara menyederhanakan asesmen 
+                        konversi mata kuliah dan pengalaman pendidikan mahasiswa. Salah satu fitur unggulannya adalah 
+                        <strong>rekomendasi otomatis konversi mata kuliah</strong> menggunakan metode 
+                        <em>Cosine Similarity</em> dan <em>Jaccard Similarity</em>, 
+                        sehingga proses asesmen menjadi lebih objektif dan efisien.
+                    </p>
+                    <p>
+                        Proyek ini menjadi puncak perjalanan akademik saya karena tidak hanya selesai sebagai skripsi, 
+                        tetapi juga benar-benar digunakan oleh PJM LPMPP UTM. Hal ini membuktikan bahwa hasil karya saya 
+                        dapat memberikan dampak nyata dan positif dalam dunia pendidikan.
+                    </p>
+                    <h3>Teknologi Utama</h3>
+                    <ul class="tech-list">
+                        <li>Laravel (Backend Framework)</li>
+                        <li>Blade Template Engine</li>
+                        <li>Bootstrap & CSS</li>
+                        <li>JavaScript (Frontend)</li>
+                        <li>MySQL (Database)</li>
+                        <li>Python (perhitungan similarity)</li>
+                    </ul>
+                    <h3>Statistik Kode</h3>
+                    <ul class="tech-list">
+                        <li>JavaScript: 53.2%</li>
+                        <li>Fluent: 24.2%</li>
+                        <li>HTML: 13.2%</li>
+                        <li>Blade: 4.1%</li>
+                        <li>PHP: 2.9%</li>
+                        <li>CSS: 2.3%</li>
+                        <li>Python: 0.1%</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://www.figma.com/design/u88uOHgzNJAH5W9ViFhw0P/Hi-fi-RPL-Lintas-Jenjang?node-id=0-1&t=j1ot4ji2QRJVeKKR-1" class="project-link" target="_blank">Lihat Desain di Figma</a>
+                        <a href="https://github.com/rvanza453/Rekognisi-Pembelajaran-Lampau-Alih-Jenjang-UTM" class="project-link" target="_blank">Lihat Kode di GitHub</a>
+                        <a href="https://rpl-alihjenjang-utm.uinfaq.org/" class="project-link" target="_blank">Lihat Implementasi</a>
+                    </div>
+                </div>
+            `
+        },
+        'project-portfolio-terminal': {
+            title: "Portofolio Tema Terminal",
+            icon: "terminal.png",
+            content: `
+                <div class="project-detail">
+                    <h2>Portofolio Tema Terminal</h2>
+                    <p><strong>Tipe:</strong> Proyek Pribadi</p>
+                    <img src="https://via.placeholder.com/450x250.png?text=Screenshot+Portofolio+Terminal" alt="Screenshot Portofolio Terminal" class="project-screenshot">
+                    <h3>Deskripsi</h3>
+                    <p>Sebuah portofolio interaktif yang dirancang dengan antarmuka seperti terminal command-line. Proyek ini dibuat untuk menunjukkan kreativitas dan keahlian dalam frontend development dengan vanilla JavaScript.</p>
+                    <h3>Teknologi Utama</h3>
+                    <ul class="tech-list">
+                        <li>HTML5</li>
+                        <li>CSS3</li>
+                        <li>JavaScript (ES6)</li>
+                    </ul>
+                    <a href="#" class="project-link" target="_blank">Lihat Kode di GitHub</a>
+                </div>
+            `
+        }
+        // Tambahkan proyek lainnya di sini
+    }
+
+
     // Data untuk aplikasi/ikon di desktop
     const apps = {
         'my-computer': {
@@ -124,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'my-documents': {
             title: "Proyek Saya",
             icon: "my-documents.png",
-            content: `<h2>Daftar Proyek</h2><ul><li><a href="#" target="_blank">Sistem Manajemen Inventaris</a></li><li><a href="#" target="_blank">Website Portofolio Terminal</a></li><li>Proyek Skripsi: ...</li></ul>`
+            content: `<p>Memuat proyek...</p>` // Konten ini akan diganti secara dinamis
         },
         'internet-explorer': {
             title: "Kontak",
@@ -155,7 +232,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function openWindow(appId) {
-        const app = apps[appId];
+        // --- MODIFIKASI: Mengambil data dari 'apps' atau 'projects' ---
+        const appData = apps[appId] || projects[appId];
+        if (!appData) return; // Hentikan jika data tidak ditemukan
+
         const taskbarApps = document.getElementById('taskbar-apps');
 
         // Cek apakah sudah ada window untuk aplikasi ini
@@ -178,18 +258,44 @@ document.addEventListener('DOMContentLoaded', () => {
         newWindow.style.top = `${Math.random() * 50 + 20}px`;
         newWindow.style.left = `${Math.random() * 150 + 50}px`;
 
-        newWindow.querySelector('.title').textContent = app.title;
-        newWindow.querySelector('.content').innerHTML = app.content;
+        newWindow.querySelector('.title').textContent = appData.title;
+        const contentArea = newWindow.querySelector('.content');
 
-        // ▼▼▼ BAGIAN YANG DIPERBAIKI ▼▼▼
+        // --- MODIFIKASI: Logika khusus untuk 'my-documents' dan lainnya ---
+        if (appId === 'my-documents') {
+            contentArea.innerHTML = ''; // Kosongkan konten default
+            contentArea.classList.add('file-explorer-view'); // Tambah kelas untuk styling
+
+            for (const projectId in projects) {
+                const project = projects[projectId];
+                const projectIcon = document.createElement('div');
+                projectIcon.className = 'desktop-icon'; // Pakai style icon desktop
+                projectIcon.style.color = '#000';
+                projectIcon.style.textShadow = 'none';
+
+                projectIcon.innerHTML = `
+                    <img src="assets/icons/${project.icon}" alt="${project.title}">
+                    <span>${project.title}</span>`;
+                
+                projectIcon.addEventListener('dblclick', () => {
+                    openWindow(projectId); // Buka jendela detail proyek
+                });
+
+                contentArea.appendChild(projectIcon);
+            }
+        } else {
+            // Ini adalah logika asli Anda untuk semua window lain
+            contentArea.innerHTML = appData.content;
+        }
 
         // --- LOGIKA ANIMASI SKILL BAR ON-SCROLL ---
+        // Logika ini tetap di sini dan hanya akan berjalan jika window yang dibuka
+        // adalah 'my-computer' karena hanya di sana ada elemen fieldset yang sesuai.
         const legends = newWindow.querySelectorAll('legend');
         let arsenalSection = null;
-        // Loop untuk mencari legend yang benar tanpa :contains()
         for (const legend of legends) {
             if (legend.textContent.trim() === 'my_arsenal.json') {
-                arsenalSection = legend.parentElement; // Dapatkan fieldset-nya
+                arsenalSection = legend.parentElement;
                 break;
             }
         }
@@ -204,74 +310,55 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
-                    // Jika elemen masuk ke viewport
                     if (entry.isIntersecting) {
-                        // Terapkan width dari "data-target-width" ke setiap bar
                         skillBars.forEach(bar => {
-                            const targetWidth = bar.dataset.targetWidth; // Baca data-target-width
-                            bar.style.width = targetWidth; // Terapkan sebagai style, ini akan memicu transisi!
+                            const targetWidth = bar.dataset.targetWidth;
+                            bar.style.width = targetWidth;
                         });
-                        
-                        // Berhenti mengamati setelah animasi berjalan
                         observer.unobserve(arsenalSection);
                     }
                 });
             }, observerOptions);
-
             observer.observe(arsenalSection);
         }
 
-        // --- LOGIKA TOMBOL WINDOW ---
-
+        // --- LOGIKA TOMBOL WINDOW (TETAP SAMA) ---
         const closeBtn = newWindow.querySelector('.close');
         const maximizeBtn = newWindow.querySelector('.maximize');
         const minimizeBtn = newWindow.querySelector('.minimize');
         const titleBar = newWindow.querySelector('.title-bar');
 
-        // 1. Tombol Close
         closeBtn.addEventListener('click', () => {
             newWindow.remove();
             const taskbarButton = document.querySelector(`.taskbar-btn[data-app-id="${appId}"]`);
-            if (taskbarButton) {
-                taskbarButton.remove();
-            }
+            if (taskbarButton) taskbarButton.remove();
         });
         
-        // 2. Tombol Maximize / Restore
         maximizeBtn.addEventListener('click', () => {
             const isMaximized = newWindow.classList.toggle('maximized');
-            maximizeBtn.classList.toggle('restore', isMaximized); // Tambah/hapus class 'restore'
-            
+            maximizeBtn.classList.toggle('restore', isMaximized);
             if (isMaximized) {
-                // Simpan posisi & ukuran sebelum maximize
                 newWindow.dataset.originalTop = newWindow.style.top;
                 newWindow.dataset.originalLeft = newWindow.style.left;
                 newWindow.dataset.originalWidth = newWindow.style.width;
                 newWindow.dataset.originalHeight = newWindow.style.height;
-                // Set ke ukuran penuh
                 newWindow.style.top = '0px';
                 newWindow.style.left = '0px';
-                // Draggable dinonaktifkan saat maximize
                 titleBar.style.cursor = 'default';
             } else {
-                // Kembalikan ke posisi & ukuran semula
                 newWindow.style.top = newWindow.dataset.originalTop;
                 newWindow.style.left = newWindow.dataset.originalLeft;
-                // Kembalikan cursor drag
                 titleBar.style.cursor = 'move';
             }
         });
 
-        // 3. Tombol Minimize
         minimizeBtn.addEventListener('click', () => {
-            newWindow.style.display = 'none'; // Sembunyikan window
+            newWindow.style.display = 'none';
         });
 
-        // Bawa ke depan saat diklik
         newWindow.addEventListener('mousedown', () => {
             highestZIndex++;
             newWindow.style.zIndex = highestZIndex;
-            // Juga aktifkan taskbar buttonnya
             document.querySelectorAll('.taskbar-btn').forEach(btn => btn.classList.remove('active'));
             const taskbarButton = document.querySelector(`.taskbar-btn[data-app-id="${appId}"]`);
             if(taskbarButton) taskbarButton.classList.add('active');
@@ -280,25 +367,21 @@ document.addEventListener('DOMContentLoaded', () => {
         makeDraggable(newWindow);
         desktop.appendChild(newWindow);
         
-        // --- MEMBUAT TOMBOL DI TASKBAR ---
+        // --- MEMBUAT TOMBOL DI TASKBAR (TETAP SAMA) ---
         const taskbarButton = document.createElement('button');
         taskbarButton.className = 'taskbar-btn active';
         taskbarButton.dataset.appId = appId;
-        taskbarButton.innerHTML = `<img src="assets/icons/${app.icon}" alt="${app.title}" /> <span>${app.title}</span>`;
+        taskbarButton.innerHTML = `<img src="assets/icons/${appData.icon}" alt="${appData.title}" /> <span>${appData.title}</span>`;
         
-        // Hapus status aktif dari tombol taskbar lain
         document.querySelectorAll('.taskbar-btn').forEach(btn => btn.classList.remove('active'));
         
         taskbarButton.addEventListener('click', () => {
             const isHidden = newWindow.style.display === 'none';
             if (isHidden) {
-                newWindow.style.display = 'flex'; // Tampilkan kembali
+                newWindow.style.display = 'flex';
             }
-            // Bawa window ke depan
             highestZIndex++;
             newWindow.style.zIndex = highestZIndex;
-            
-            // Atur status aktif
             document.querySelectorAll('.taskbar-btn').forEach(btn => btn.classList.remove('active'));
             taskbarButton.classList.add('active');
         });
@@ -306,13 +389,15 @@ document.addEventListener('DOMContentLoaded', () => {
         taskbarApps.appendChild(taskbarButton);
     }
 
-    // Fungsi untuk membuat jendela bisa di-drag
+    // --- FUNGSI DRAGGABLE & JAM (TETAP SAMA) ---
     function makeDraggable(element) {
         const titleBar = element.querySelector('.title-bar');
         let isDragging = false;
         let offsetX, offsetY;
 
         titleBar.addEventListener('mousedown', (e) => {
+            // --- MODIFIKASI KECIL: Jangan drag saat maximized ---
+            if (element.classList.contains('maximized')) return;
             isDragging = true;
             offsetX = e.clientX - element.offsetLeft;
             offsetY = e.clientY - element.offsetTop;
@@ -327,12 +412,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         document.addEventListener('mouseup', () => {
-            isDragging = false;
-            element.style.cursor = 'default';
+            if(isDragging) {
+                isDragging = false;
+                // Kembalikan cursor ke 'move' hanya jika tidak maximized
+                if (!element.classList.contains('maximized')) {
+                    element.style.cursor = 'move'; // Seharusnya titleBar, tapi element juga bisa
+                    titleBar.style.cursor = 'move';
+                } else {
+                     titleBar.style.cursor = 'default';
+                }
+            }
         });
     }
 
-    // Fungsi untuk jam digital
     function updateClock() {
         const now = new Date();
         const hours = now.getHours();
