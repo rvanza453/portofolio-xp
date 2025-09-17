@@ -15,13 +15,67 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="project-detail">
                     <h2>Sistem E-RPL Alih Jenjang</h2>
                     <p><strong>Klien:</strong> PJM LPMPP Universitas Trunojoyo Madura (UTM)</p>
-                    <img src="https://via.placeholder.com/450x250.png?text=Screenshot+Proyek+E-RPL" alt="Screenshot E-RPL" class="project-screenshot">
+                    
+                    <div class="slider-container">
+                        <button class="slider-btn slider-btn-left" style="display: none;">&lt;</button>
+                        <div class="slider-wrapper">
+                            <div class="slider-item">
+                                <img src="./assets/images/rpl/login.png" alt="Screenshot E-RPL login" class="slider-image">
+                                <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
+                            </div>
+                             <div class="slider-item">
+                                <img src="./assets/images/rpl/dashboard.png" alt="Screenshot E-RPL dashboard" class="slider-image">
+                                <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
+                            </div>
+                             <div class="slider-item">
+                                <img src="./assets/images/rpl/profil.png" alt="Screenshot E-RPL profil" class="slider-image">
+                                <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
+                            </div>
+                             <div class="slider-item">
+                                <img src="./assets/images/rpl/kelola_matkul.png" alt="Screenshot E-RPL kelola_matkul" class="slider-image">
+                                <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
+                            </div>
+                             <div class="slider-item">
+                                <img src="./assets/images/rpl/input_matkul.png" alt="Screenshot E-RPL input_matkul" class="slider-image">
+                                <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
+                            </div>
+                             <div class="slider-item">
+                                <img src="./assets/images/rpl/kelola_penugasan.png" alt="Screenshot E-RPL kelola_penugasan" class="slider-image">
+                                <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
+                            </div>
+                             <div class="slider-item">
+                                <img src="./assets/images/rpl/bukti.png" alt="Screenshot E-RPL bukti" class="slider-image">
+                                <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
+                            </div>
+                             <div class="slider-item">
+                                <img src="./assets/images/rpl/self_assessment.png" alt="Screenshot E-RPL self_assessment" class="slider-image">
+                                <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
+                            </div>
+                             <div class="slider-item">
+                                <img src="./assets/images/rpl/rekomendasi_matkul.png" alt="Screenshot E-RPL rekomendasi" class="slider-image">
+                                <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
+                            </div>
+                             <div class="slider-item">
+                                <img src="./assets/images/rpl/penilaian_matkul.png" alt="Screenshot E-RPL penilaian_matkul" class="slider-image">
+                                <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
+                            </div>
+                             <div class="slider-item">
+                                <img src="./assets/images/rpl/luaran1.png" alt="Screenshot E-RPL luaran 1" class="slider-image">
+                                <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
+                            </div>
+                             <div class="slider-item">
+                                <img src="./assets/images/rpl/luaran2.png" alt="Screenshot E-RPL luaran 2" class="slider-image">
+                                <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
+                            </div>
+                        </div>
+                        <button class="slider-btn slider-btn-right">&gt;</button>
+                    </div>
                     <h3>Deskripsi</h3>
                     <p>
                         Sistem Rekognisi Pembelajaran Lampau (E-RPL) adalah proyek skripsi saya yang berhasil diimplementasikan secara nyata 
                         di Universitas Trunojoyo Madura. Sistem ini mendukung proses <em>alih jenjang</em> dengan cara menyederhanakan asesmen 
                         konversi mata kuliah dan pengalaman pendidikan mahasiswa. Salah satu fitur unggulannya adalah 
-                        <strong>rekomendasi otomatis konversi mata kuliah</strong> menggunakan metode 
+                        <strong>rekomendasi konversi mata kuliah</strong> menggunakan metode 
                         <em>Cosine Similarity</em> dan <em>Jaccard Similarity</em>, 
                         sehingga proses asesmen menjadi lebih objektif dan efisien.
                     </p>
@@ -32,22 +86,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     </p>
                     <h3>Teknologi Utama</h3>
                     <ul class="tech-list">
-                        <li>Laravel (Backend Framework)</li>
-                        <li>Blade Template Engine</li>
+                        <li>Laravel</li>
                         <li>Bootstrap & CSS</li>
                         <li>JavaScript (Frontend)</li>
                         <li>MySQL (Database)</li>
                         <li>Python (perhitungan similarity)</li>
                     </ul>
-                    <h3>Statistik Kode</h3>
+                    <h3>Kode Program</h3>
                     <ul class="tech-list">
-                        <li>JavaScript: 53.2%</li>
-                        <li>Fluent: 24.2%</li>
-                        <li>HTML: 13.2%</li>
-                        <li>Blade: 4.1%</li>
-                        <li>PHP: 2.9%</li>
-                        <li>CSS: 2.3%</li>
-                        <li>Python: 0.1%</li>
+                        <li>PHP</li>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                        <li>Python</li>
                     </ul>
                     <div class="project-links">
                         <a href="https://www.figma.com/design/u88uOHgzNJAH5W9ViFhw0P/Hi-fi-RPL-Lintas-Jenjang?node-id=0-1&t=j1ot4ji2QRJVeKKR-1" class="project-link" target="_blank">Lihat Desain di Figma</a>
@@ -57,6 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `
         },
+        // Anda bisa menerapkan struktur slider yang sama untuk proyek lain
         'project-portfolio-terminal': {
             title: "Portofolio Tema Terminal",
             icon: "terminal.png",
@@ -64,7 +116,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="project-detail">
                     <h2>Portofolio Tema Terminal</h2>
                     <p><strong>Tipe:</strong> Proyek Pribadi</p>
-                    <img src="https://via.placeholder.com/450x250.png?text=Screenshot+Portofolio+Terminal" alt="Screenshot Portofolio Terminal" class="project-screenshot">
+                    
+                    <div class="slider-container">
+                         <button class="slider-btn slider-btn-left" style="display: none;">&lt;</button>
+                        <div class="slider-wrapper">
+                            <img src="https://via.placeholder.com/450x250/1e1e1e/00ff00?text=Tampilan+Awal" alt="Screenshot Portofolio Terminal 1" class="slider-image">
+                            <img src="https://via.placeholder.com/450x250/1e1e1e/00ff00?text=Perintah+'projects'" alt="Screenshot Portofolio Terminal 2" class="slider-image">
+                        </div>
+                        <button class="slider-btn slider-btn-right">&gt;</button>
+                    </div>
+
                     <h3>Deskripsi</h3>
                     <p>Sebuah portofolio interaktif yang dirancang dengan antarmuka seperti terminal command-line. Proyek ini dibuat untuk menunjukkan kreativitas dan keahlian dalam frontend development dengan vanilla JavaScript.</p>
                     <h3>Teknologi Utama</h3>
@@ -77,8 +138,79 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `
         }
-        // Tambahkan proyek lainnya di sini
-    }
+    };
+    // const projects = {
+    //     'project-erpl': {
+    //         title: "Sistem E-RPL Universitas Trunojoyo",
+    //         icon: "my-documents.png",
+    //         content: `
+    //             <div class="project-detail">
+    //                 <h2>Sistem E-RPL Alih Jenjang</h2>
+    //                 <p><strong>Klien:</strong> PJM LPMPP Universitas Trunojoyo Madura (UTM)</p>
+    //                 <img src="https://via.placeholder.com/450x250.png?text=Screenshot+Proyek+E-RPL" alt="Screenshot E-RPL" class="project-screenshot">
+    //                 <h3>Deskripsi</h3>
+    //                 <p>
+    //                     Sistem Rekognisi Pembelajaran Lampau (E-RPL) adalah proyek skripsi saya yang berhasil diimplementasikan secara nyata 
+    //                     di Universitas Trunojoyo Madura. Sistem ini mendukung proses <em>alih jenjang</em> dengan cara menyederhanakan asesmen 
+    //                     konversi mata kuliah dan pengalaman pendidikan mahasiswa. Salah satu fitur unggulannya adalah 
+    //                     <strong>rekomendasi otomatis konversi mata kuliah</strong> menggunakan metode 
+    //                     <em>Cosine Similarity</em> dan <em>Jaccard Similarity</em>, 
+    //                     sehingga proses asesmen menjadi lebih objektif dan efisien.
+    //                 </p>
+    //                 <p>
+    //                     Proyek ini menjadi puncak perjalanan akademik saya karena tidak hanya selesai sebagai skripsi, 
+    //                     tetapi juga benar-benar digunakan oleh PJM LPMPP UTM. Hal ini membuktikan bahwa hasil karya saya 
+    //                     dapat memberikan dampak nyata dan positif dalam dunia pendidikan.
+    //                 </p>
+    //                 <h3>Teknologi Utama</h3>
+    //                 <ul class="tech-list">
+    //                     <li>Laravel (Backend Framework)</li>
+    //                     <li>Blade Template Engine</li>
+    //                     <li>Bootstrap & CSS</li>
+    //                     <li>JavaScript (Frontend)</li>
+    //                     <li>MySQL (Database)</li>
+    //                     <li>Python (perhitungan similarity)</li>
+    //                 </ul>
+    //                 <h3>Statistik Kode</h3>
+    //                 <ul class="tech-list">
+    //                     <li>JavaScript: 53.2%</li>
+    //                     <li>Fluent: 24.2%</li>
+    //                     <li>HTML: 13.2%</li>
+    //                     <li>Blade: 4.1%</li>
+    //                     <li>PHP: 2.9%</li>
+    //                     <li>CSS: 2.3%</li>
+    //                     <li>Python: 0.1%</li>
+    //                 </ul>
+    //                 <div class="project-links">
+    //                     <a href="https://www.figma.com/design/u88uOHgzNJAH5W9ViFhw0P/Hi-fi-RPL-Lintas-Jenjang?node-id=0-1&t=j1ot4ji2QRJVeKKR-1" class="project-link" target="_blank">Lihat Desain di Figma</a>
+    //                     <a href="https://github.com/rvanza453/Rekognisi-Pembelajaran-Lampau-Alih-Jenjang-UTM" class="project-link" target="_blank">Lihat Kode di GitHub</a>
+    //                     <a href="https://rpl-alihjenjang-utm.uinfaq.org/" class="project-link" target="_blank">Lihat Implementasi</a>
+    //                 </div>
+    //             </div>
+    //         `
+    //     },
+    //     'project-portfolio-terminal': {
+    //         title: "Portofolio Tema Terminal",
+    //         icon: "terminal.png",
+    //         content: `
+    //             <div class="project-detail">
+    //                 <h2>Portofolio Tema Terminal</h2>
+    //                 <p><strong>Tipe:</strong> Proyek Pribadi</p>
+    //                 <img src="https://via.placeholder.com/450x250.png?text=Screenshot+Portofolio+Terminal" alt="Screenshot Portofolio Terminal" class="project-screenshot">
+    //                 <h3>Deskripsi</h3>
+    //                 <p>Sebuah portofolio interaktif yang dirancang dengan antarmuka seperti terminal command-line. Proyek ini dibuat untuk menunjukkan kreativitas dan keahlian dalam frontend development dengan vanilla JavaScript.</p>
+    //                 <h3>Teknologi Utama</h3>
+    //                 <ul class="tech-list">
+    //                     <li>HTML5</li>
+    //                     <li>CSS3</li>
+    //                     <li>JavaScript (ES6)</li>
+    //                 </ul>
+    //                 <a href="#" class="project-link" target="_blank">Lihat Kode di GitHub</a>
+    //             </div>
+    //         `
+    //     }
+    //     // Tambahkan proyek lainnya di sini
+    // }
 
 
     // Data untuk aplikasi/ikon di desktop
@@ -231,6 +363,29 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function showLightbox(imageSrc) {
+        // Cek jika sudah ada lightbox, hapus dulu
+        const existingLightbox = document.getElementById('lightbox-overlay');
+        if (existingLightbox) {
+            existingLightbox.remove();
+        }
+
+        const lightbox = document.createElement('div');
+        lightbox.id = 'lightbox-overlay';
+        lightbox.innerHTML = `
+            <span id="lightbox-close">&times;</span>
+            <img src="${imageSrc}" id="lightbox-image">
+        `;
+        document.body.appendChild(lightbox);
+
+        // Event listener untuk menutup lightbox
+        lightbox.addEventListener('click', (e) => {
+            if (e.target.id === 'lightbox-overlay' || e.target.id === 'lightbox-close') {
+                lightbox.remove();
+            }
+        });
+    }
+
     function openWindow(appId) {
         // --- MODIFIKASI: Mengambil data dari 'apps' atau 'projects' ---
         const appData = apps[appId] || projects[appId];
@@ -286,6 +441,48 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             // Ini adalah logika asli Anda untuk semua window lain
             contentArea.innerHTML = appData.content;
+        }
+
+        const sliderContainer = newWindow.querySelector('.slider-container');
+        if (sliderContainer) {
+            const sliderWrapper = sliderContainer.querySelector('.slider-wrapper');
+            const leftBtn = sliderContainer.querySelector('.slider-btn-left');
+            const rightBtn = sliderContainer.querySelector('.slider-btn-right');
+            const items = sliderContainer.querySelectorAll('.slider-item');
+
+            const itemWidth = items[0].offsetWidth + 10; // Lebar item + gap
+
+            const updateButtonVisibility = () => {
+                // Tampilkan/sembunyikan tombol kiri
+                leftBtn.style.display = sliderWrapper.scrollLeft > 0 ? 'block' : 'none';
+                // Tampilkan/sembunyikan tombol kanan
+                const maxScrollLeft = sliderWrapper.scrollWidth - sliderWrapper.clientWidth;
+                rightBtn.style.display = sliderWrapper.scrollLeft < maxScrollLeft - 1 ? 'block' : 'none';
+            };
+            
+            // Panggil sekali saat window dibuka
+            setTimeout(updateButtonVisibility, 100); 
+            // Cek lagi saat window di-resize (jika diimplementasikan) atau konten berubah
+            sliderWrapper.addEventListener('scroll', updateButtonVisibility);
+
+
+            rightBtn.addEventListener('click', () => {
+                sliderWrapper.scrollBy({ left: itemWidth, behavior: 'smooth' });
+            });
+
+            leftBtn.addEventListener('click', () => {
+                sliderWrapper.scrollBy({ left: -itemWidth, behavior: 'smooth' });
+            });
+
+            // --- LOGIKA UNTUK LIGHTBOX (FULLSCREEN) ---
+            items.forEach(item => {
+                const fullscreenBtn = item.querySelector('.fullscreen-btn');
+                const image = item.querySelector('.slider-image');
+                
+                fullscreenBtn.addEventListener('click', () => {
+                    showLightbox(image.src);
+                });
+            });
         }
 
         // --- LOGIKA ANIMASI SKILL BAR ON-SCROLL ---

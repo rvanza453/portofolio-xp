@@ -511,3 +511,134 @@ button.close {
 .project-link:hover {
     filter: brightness(1.1);
 }
+
+/* --- Styling BARU untuk Image Slider Multi-Item --- */
+.slider-container {
+    position: relative;
+    width: 100%;
+    margin: 15px auto;
+    padding: 0 40px; /* Beri ruang untuk tombol navigasi absolut */
+    box-sizing: border-box;
+}
+
+.slider-wrapper {
+    display: flex;
+    gap: 10px; /* Jarak antar gambar */
+    overflow-x: auto; /* Kunci untuk scrolling horizontal */
+    scroll-snap-type: x mandatory; /* Efek berhenti yang pas (opsional) */
+    scrollbar-width: none; /* Sembunyikan scrollbar di Firefox */
+    -ms-overflow-style: none;  /* Sembunyikan scrollbar di IE/Edge */
+}
+
+/* Sembunyikan scrollbar di Chrome/Safari/Opera */
+.slider-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.slider-item {
+    position: relative;
+    flex: 0 0 auto; /* Mencegah item direntangkan atau menyusut */
+    width: 200px; /* Lebar setiap item gambar */
+    height: 125px; /* Tinggi setiap item gambar */
+    scroll-snap-align: start; /* Efek berhenti yang pas (opsional) */
+    cursor: pointer;
+    overflow: hidden; /* Agar tombol fullscreen tidak keluar dari border */
+    border: 1px solid #7f9db9;
+}
+
+.slider-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Gambar akan mengisi area tanpa distorsi */
+    transition: transform 0.3s ease;
+}
+
+.slider-item:hover .slider-image {
+    transform: scale(1.1); /* Efek zoom saat hover */
+}
+
+.fullscreen-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    opacity: 0; /* Sembunyi secara default */
+    transition: opacity 0.3s ease;
+    font-size: 16px;
+    line-height: 1;
+}
+
+.slider-item:hover .fullscreen-btn {
+    opacity: 1; /* Muncul saat item di-hover */
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #e2e2e2;
+    border: 1px solid #7f9db9;
+    width: 30px;
+    height: 50px;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 18px;
+    font-family: monospace;
+}
+
+.slider-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.slider-btn-left {
+    left: 0;
+}
+
+.slider-btn-right {
+    right: 0;
+}
+
+
+/* --- Styling BARU untuk Lightbox (Fullscreen) --- */
+#lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Pastikan di atas segalanya */
+    animation: fadeIn 0.3s;
+}
+
+#lightbox-image {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border: 3px solid white;
+}
+
+#lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
