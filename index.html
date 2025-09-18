@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+    <audio id="background-audio" src="./assets/background-music.mp3" loop></audio>
     <div id="desktop">
         <div class="firefly"></div>
         <div class="firefly"></div>
@@ -19,12 +19,16 @@
 
     <div id="taskbar">
         <div id="start-button">
-            <img src="assets/images/start-logo.png" alt="Start">
+            <img src="assets/icons/" alt="Start">
             <span>start</span>
         </div>
         <div id="taskbar-apps">
             </div>
         <div id="system-tray">
+            <span id="clock">9:03 AM</span>
+        </div>
+        <div id="system-tray">
+            <button id="volume-control-btn" title="Play/Pause Music">🔊</button>
             <span id="clock">9:03 AM</span>
         </div>
     </div>
@@ -44,7 +48,7 @@
             </div>
         </div>
     </template>
-    
+
     <div id="lightbox-overlay" class="hidden">
         <span id="lightbox-close">&times;</span>
         <img id="lightbox-image" src="" alt="Gambar Proyek Diperbesar">

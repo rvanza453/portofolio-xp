@@ -6,14 +6,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const lightboxOverlay = document.getElementById('lightbox-overlay');
     const lightboxImage = document.getElementById('lightbox-image');
     const lightboxClose = document.getElementById('lightbox-close');
+    const audio = document.getElementById('background-audio');
+    const volumeBtn = document.getElementById('volume-control-btn');
+    audio.volume = 0.3;
 
-    // --- TAMBAHAN: DATABASE KHUSUS UNTUK PROYEK ---
-    // Kita buat objek terpisah untuk menyimpan semua data proyek.
-    // Ini membuat data lebih rapi dan mudah dikelola.
+    if (volumeBtn && audio) {
+        volumeBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                volumeBtn.innerHTML = '🔊'; // Ganti ikon menjadi speaker aktif
+            } else {
+                audio.pause();
+                volumeBtn.innerHTML = '🔇'; // Ganti ikon menjadi speaker mute
+            }
+        });
+    }
+
     const projects = {
         'project-erpl': {
             title: "Sistem E-RPL Universitas Trunojoyo",
-            icon: "my-documents.png",
+            icon: "sertifikat.png",
             content: `
                 <div class="project-detail">
                     <h2>Sistem E-RPL Alih Jenjang</h2>
@@ -114,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Anda bisa menerapkan struktur slider yang sama untuk proyek lain
         'project-obe': {
             title: "Sistem Outcome Based Education (OBE)",
-            icon: "terminal.png",
+            icon: "pie-chart.png",
             layout: 'portrait',
             content: `
                 <div class="project-detail">
@@ -400,14 +412,46 @@ document.addEventListener('DOMContentLoaded', () => {
             content: `<p>Memuat proyek...</p>` // Konten ini akan diganti secara dinamis
         },
         'internet-explorer': {
-            title: "Kontak",
+            title: "Kontak Saya",
             icon: "ie.png",
-            content: `<h3>Hubungi Saya</h3><p>Email: revanza@example.com</p><p>LinkedIn: <a href="#" target="_blank">linkedin.com/in/revanza</a></p><p>GitHub: <a href="#" target="_blank">github.com/revanza</a></p>`
+            content: `
+                <div class="digital-card">
+                    <div class="card-header">
+                        <img src="./assets/images/foto-profil.jpg" alt="Foto Profil" class="profile-pic">
+                        <div class="card-header-text">
+                            <h2>Muhammad Revanza</h2>
+                            <p>Web & Mobile Developer | Problem Solver</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p>Hubungi saya melalui platform di bawah ini. Saya selalu terbuka untuk diskusi, kolaborasi, atau peluang baru.</p>
+                        <div class="contact-links">
+                            <a href="mailto:muhammadrevanza453@gmail.com" class="contact-link" title="Kirim Email">
+                                <img src="./assets/icons/mail.png" alt="Email">
+                                <span>muhammadrevanza453@gmail.com</span>
+                            </a>
+                            <a href="https://www.linkedin.com/in/muhammad-revanza-1885b9298" target="_blank" class="contact-link" title="Lihat Profil LinkedIn">
+                                <img src="./assets/icons/linkedin.png" alt="LinkedIn">
+                                <span>LinkedIn</span>
+                            </a>
+                            <a href="https://github.com/rvanza453" target="_blank" class="contact-link" title="Lihat Repositori GitHub">
+                                <img src="./assets/icons/github.png" alt="GitHub">
+                                <span>GitHub</span>
+                            </a>
+                            <a href="https://www.instagram.com/rvanza.m" target="_blank" class="contact-link" title="Lihat Profil Instagram">
+                                <img src="./assets/icons/instagram.png" alt="Instagram">
+                                <span>Instagram</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `
         },
-        'terminal': {
-            title: "Terminal",
-            icon: "terminal.png",
-            content: `<p>Fitur terminal akan ditambahkan di sini!</p>`
+        'revanza-cv': {
+            title: "Revanza_CV.pdf",
+            icon: "pdf.png",
+            type: 'file',
+            url: 'assets/muhammad_revanza_cv.pdf'
         }
     };
 
@@ -422,7 +466,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 <img src="assets/icons/${app.icon}" alt="${app.title}">
                 <span>${app.title}</span>
             `;
-            iconDiv.addEventListener('dblclick', () => openWindow(appId));
+
+            // Cek apakah tipe app adalah 'file'
+            if (app.type === 'file') {
+                // Jika 'file', maka saat di-double-click, buka URL di tab baru
+                iconDiv.addEventListener('dblclick', () => {
+                    window.open(app.url, '_blank');
+                });
+            } else {
+                // Jika bukan 'file', jalankan fungsi openWindow seperti biasa
+                iconDiv.addEventListener('dblclick', () => openWindow(appId));
+            }
+
             desktop.appendChild(iconDiv);
         }
     }
