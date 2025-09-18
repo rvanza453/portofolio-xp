@@ -3,6 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const clockElement = document.getElementById('clock');
     const windowTemplate = document.getElementById('window-template');
     let highestZIndex = 100;
+    const lightboxOverlay = document.getElementById('lightbox-overlay');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const lightboxClose = document.getElementById('lightbox-close');
 
     // --- TAMBAHAN: DATABASE KHUSUS UNTUK PROYEK ---
     // Kita buat objek terpisah untuk menyimpan semua data proyek.
@@ -112,91 +115,89 @@ document.addEventListener('DOMContentLoaded', () => {
         'project-obe': {
             title: "Sistem Outcome Based Education (OBE)",
             icon: "terminal.png",
+            layout: 'portrait',
             content: `
                 <div class="project-detail">
-                    <h2>Sistem Outcome Based Education (OBE)</h2>
-                    <p><strong>Klien:</strong> UPN Veteran Jawa Timur Prodi Hukum & Kimia</p>
+                    <h2>Sistem Outcome Based Education (OBE) - Versi Mobile</h2>
+                    <p><strong>Klien:</strong> UPN Veteran Jawa Timur (Prodi Hukum & Kimia)</p>
+                    <p><strong>Tipe Proyek:</strong> Pengembangan Aplikasi Mobile (Magang)</p>
                     
-                    <div class="slider-container">
+                    <div class="slider-container portrait-mode">
                         <button class="slider-btn slider-btn-left" style="display: none;">&lt;</button>
                         <div class="slider-wrapper">
                             <div class="slider-item">
                                 <img src="./assets/images/obe/login.jpg" alt="Screenshot E-OBE login" class="slider-image">
                                 <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
                             </div>
-                             <div class="slider-item">
+                            <div class="slider-item">
                                 <img src="./assets/images/obe/dashboard.jpg" alt="Screenshot E-OBE dashboard" class="slider-image">
                                 <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
                             </div>
-                             <div class="slider-item">
+                            <div class="slider-item">
                                 <img src="./assets/images/obe/daftar_matkul.jpg" alt="Screenshot E-OBE daftar matkul" class="slider-image">
                                 <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
                             </div>
-                             <div class="slider-item">
+                            <div class="slider-item">
                                 <img src="./assets/images/obe/detail_matkul.jpg" alt="Screenshot E-OBE detail matkul" class="slider-image">
                                 <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
                             </div>
-                             <div class="slider-item">
+                            <div class="slider-item">
                                 <img src="./assets/images/obe/data_evaluasi_rps.jpg" alt="Screenshot E-OBE data evaluasi rps" class="slider-image">
                                 <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
                             </div>
-                             <div class="slider-item">
+                            <div class="slider-item">
                                 <img src="./assets/images/obe/evaluasi_rps_mahasiswa.jpg" alt="Screenshot E-OBE evaluasi rps mahasiswa" class="slider-image">
                                 <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
                             </div>
-                             <div class="slider-item">
+                            <div class="slider-item">
                                 <img src="./assets/images/obe/evaluasi_rps.jpg" alt="Screenshot E-OBE evaluasi rps" class="slider-image">
                                 <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
                             </div>
-                             <div class="slider-item">
+                            <div class="slider-item">
                                 <img src="./assets/images/obe/detail_evaluasi_rps.jpg" alt="Screenshot E-OBE detail evaluasi rps" class="slider-image">
                                 <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
                             </div>
-                             <div class="slider-item">
+                            <div class="slider-item">
                                 <img src="./assets/images/obe/statistik_matkul.jpg" alt="Screenshot E-OBE statistik matkul" class="slider-image">
                                 <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
                             </div>
-                             <div class="slider-item">
+                            <div class="slider-item">
                                 <img src="./assets/images/obe/nilai_total_cpl.jpg" alt="Screenshot E-OBE nilai total cpl" class="slider-image">
                                 <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
                             </div>
                         </div>
                         <button class="slider-btn slider-btn-right">&gt;</button>
                     </div>
-                    <h3>Deskripsi</h3>
+
+                    <h3>Deskripsi Proyek</h3>
                     <p>
-                        Sistem Rekognisi Pembelajaran Lampau (E-RPL) adalah proyek skripsi saya yang berhasil diimplementasikan secara nyata 
-                        di Universitas Trunojoyo Madura. Sistem ini mendukung proses <em>alih jenjang</em> dengan cara menyederhanakan asesmen 
-                        konversi mata kuliah dan pengalaman pendidikan mahasiswa. Salah satu fitur unggulannya adalah 
-                        <strong>rekomendasi konversi mata kuliah</strong> menggunakan metode 
-                        <em>Cosine Similarity</em> dan <em>Jaccard Similarity</em>, 
-                        sehingga proses asesmen menjadi lebih objektif dan efisien.
+                        Aplikasi ini adalah ekstensi mobile dari Sistem OBE berbasis web yang sudah ada. Tujuannya adalah memberikan solusi yang lebih fleksibel dan praktis bagi <strong>dosen</strong> untuk mengelola tugas-tugas evaluasi pembelajaran langsung dari smartphone, mengurangi ketergantungan pada laptop.
                     </p>
                     <p>
-                        Proyek ini menjadi puncak perjalanan akademik saya karena tidak hanya selesai sebagai skripsi, 
-                        tetapi juga benar-benar digunakan oleh PJM LPMPP UTM. Hal ini membuktikan bahwa hasil karya saya 
-                        dapat memberikan dampak nyata dan positif dalam dunia pendidikan.
+                        Pengembangan difokuskan khusus untuk <strong>role Dosen</strong> karena alur kerjanya seimbang—tidak serumit role Admin/Kurikulum, namun lebih interaktif daripada role Mahasiswa yang cenderung pasif. Keputusan ini memastikan aplikasi dapat memberikan fungsionalitas yang maksimal dan pengalaman pengguna yang optimal di platform mobile.
                     </p>
-                    <h3>Teknologi Utama</h3>
+
+                    <h3>Peran & Tanggung Jawab Saya</h3>
+                    <p>
+                        Sebagai salah satu dari dua <strong>Mobile Developer</strong> dalam tim, saya bertanggung jawab penuh dalam merancang dan mengimplementasikan antarmuka (UI/UX) serta logika aplikasi menggunakan <strong>Kotlin Native</strong>, memastikan aplikasi berjalan lancar, responsif, dan sesuai dengan alur kerja yang telah ditentukan.
+                    </p>
+
+                    <h3>Teknologi & Metodologi</h3>
                     <ul class="tech-list">
-                        <li>Laravel</li>
-                        <li>Bootstrap & CSS</li>
-                        <li>JavaScript (Frontend)</li>
-                        <li>MySQL (Database)</li>
-                        <li>Python (perhitungan similarity)</li>
+                        <li><strong>Mobile:</strong> Kotlin Native</li>
+                        <li><strong>Backend:</strong> Laravel (PHP)</li>
+                        <li><strong>Database:</strong> MySQL</li>
                     </ul>
-                    <h3>Kode Program</h3>
+
+                    <h3>Tim Proyek</h3>
                     <ul class="tech-list">
-                        <li>PHP</li>
-                        <li>HTML</li>
-                        <li>CSS</li>
-                        <li>JavaScript</li>
-                        <li>Python</li>
+                        <li><strong>Mobile Developer:</strong> Muhammad Revanza, Isfa Fadil Muhammad</li>
+                        <li><strong>Backend Developer:</strong> Abdul Azis Naufal Farizqi, Ahmad Sofian Aris Saputra</li>
                     </ul>
+                    
                     <div class="project-links">
-                        <a href="https://www.figma.com/design/u88uOHgzNJAH5W9ViFhw0P/Hi-fi-RPL-Lintas-Jenjang?node-id=0-1&t=j1ot4ji2QRJVeKKR-1" class="project-link" target="_blank">Lihat Desain di Figma</a>
-                        <a href="https://github.com/rvanza453/Rekognisi-Pembelajaran-Lampau-Alih-Jenjang-UTM" class="project-link" target="_blank">Lihat Kode di GitHub</a>
-                        <a href="https://rpl-alihjenjang-utm.uinfaq.org/" class="project-link" target="_blank">Lihat Implementasi</a>
+                        <a href="https://www.figma.com/proto/igDhsx6nXDG2sXLBCZeUEa/OBE-Team?node-id=1588-445&p=f&t=vylaMzW6S0WVhG6j-1&scaling=scale-down&content-scaling=fixed&page-id=3%3A154&starting-point-node-id=1588%3A445" class="project-link" target="_blank">Lihat Desain di Figma</a>
+                        <a href="https://github.com/rvanza453/OBE-Dosen" class="project-link" target="_blank">Lihat Kode di GitHub</a>
                     </div>
                 </div>
             `
@@ -427,26 +428,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showLightbox(imageSrc) {
-        // Cek jika sudah ada lightbox, hapus dulu
-        const existingLightbox = document.getElementById('lightbox-overlay');
-        if (existingLightbox) {
-            existingLightbox.remove();
-        }
-
-        const lightbox = document.createElement('div');
-        lightbox.id = 'lightbox-overlay';
-        lightbox.innerHTML = `
-            <span id="lightbox-close">&times;</span>
-            <img src="${imageSrc}" id="lightbox-image">
-        `;
-        document.body.appendChild(lightbox);
-
-        // Event listener untuk menutup lightbox
-        lightbox.addEventListener('click', (e) => {
-            if (e.target.id === 'lightbox-overlay' || e.target.id === 'lightbox-close') {
-                lightbox.remove();
-            }
-        });
+        lightboxImage.src = imageSrc;
+        lightboxOverlay.classList.remove('hidden');
     }
 
     function openWindow(appId) {
@@ -507,6 +490,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const sliderContainer = newWindow.querySelector('.slider-container');
+
+        if (appData.layout === 'portrait') {
+            sliderContainer.classList.add('portrait-mode');
+        }
+        
         if (sliderContainer) {
             const sliderWrapper = sliderContainer.querySelector('.slider-wrapper');
             const leftBtn = sliderContainer.querySelector('.slider-btn-left');
@@ -694,8 +682,18 @@ document.addEventListener('DOMContentLoaded', () => {
         clockElement.textContent = `${formattedHours}:${minutes} ${ampm}`;
     }
 
-    // Inisialisasi
+        lightboxClose.addEventListener('click', () => {
+        lightboxOverlay.classList.add('hidden');
+    });
+
     createDesktopIcons();
     setInterval(updateClock, 1000);
     updateClock();
+
+    lightboxOverlay.addEventListener('click', (e) => {
+        // Hanya tutup jika yang diklik adalah area overlay gelap, bukan gambar
+        if (e.target === lightboxOverlay) {
+            lightboxOverlay.classList.add('hidden');
+        }
+    });
 });
