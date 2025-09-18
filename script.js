@@ -109,32 +109,95 @@ document.addEventListener('DOMContentLoaded', () => {
             `
         },
         // Anda bisa menerapkan struktur slider yang sama untuk proyek lain
-        'project-portfolio-terminal': {
-            title: "Portofolio Tema Terminal",
+        'project-obe': {
+            title: "Sistem Outcome Based Education (OBE)",
             icon: "terminal.png",
             content: `
                 <div class="project-detail">
-                    <h2>Portofolio Tema Terminal</h2>
-                    <p><strong>Tipe:</strong> Proyek Pribadi</p>
+                    <h2>Sistem Outcome Based Education (OBE)</h2>
+                    <p><strong>Klien:</strong> UPN Veteran Jawa Timur Prodi Hukum & Kimia</p>
                     
                     <div class="slider-container">
-                         <button class="slider-btn slider-btn-left" style="display: none;">&lt;</button>
+                        <button class="slider-btn slider-btn-left" style="display: none;">&lt;</button>
                         <div class="slider-wrapper">
-                            <img src="https://via.placeholder.com/450x250/1e1e1e/00ff00?text=Tampilan+Awal" alt="Screenshot Portofolio Terminal 1" class="slider-image">
-                            <img src="https://via.placeholder.com/450x250/1e1e1e/00ff00?text=Perintah+'projects'" alt="Screenshot Portofolio Terminal 2" class="slider-image">
+                            <div class="slider-item">
+                                <img src="./assets/images/obe/login.jpg" alt="Screenshot E-OBE login" class="slider-image">
+                                <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
+                            </div>
+                             <div class="slider-item">
+                                <img src="./assets/images/obe/dashboard.jpg" alt="Screenshot E-OBE dashboard" class="slider-image">
+                                <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
+                            </div>
+                             <div class="slider-item">
+                                <img src="./assets/images/obe/daftar_matkul.jpg" alt="Screenshot E-OBE daftar matkul" class="slider-image">
+                                <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
+                            </div>
+                             <div class="slider-item">
+                                <img src="./assets/images/obe/detail_matkul.jpg" alt="Screenshot E-OBE detail matkul" class="slider-image">
+                                <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
+                            </div>
+                             <div class="slider-item">
+                                <img src="./assets/images/obe/data_evaluasi_rps.jpg" alt="Screenshot E-OBE data evaluasi rps" class="slider-image">
+                                <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
+                            </div>
+                             <div class="slider-item">
+                                <img src="./assets/images/obe/evaluasi_rps_mahasiswa.jpg" alt="Screenshot E-OBE evaluasi rps mahasiswa" class="slider-image">
+                                <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
+                            </div>
+                             <div class="slider-item">
+                                <img src="./assets/images/obe/evaluasi_rps.jpg" alt="Screenshot E-OBE evaluasi rps" class="slider-image">
+                                <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
+                            </div>
+                             <div class="slider-item">
+                                <img src="./assets/images/obe/detail_evaluasi_rps.jpg" alt="Screenshot E-OBE detail evaluasi rps" class="slider-image">
+                                <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
+                            </div>
+                             <div class="slider-item">
+                                <img src="./assets/images/obe/statistik_matkul.jpg" alt="Screenshot E-OBE statistik matkul" class="slider-image">
+                                <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
+                            </div>
+                             <div class="slider-item">
+                                <img src="./assets/images/obe/nilai_total_cpl.jpg" alt="Screenshot E-OBE nilai total cpl" class="slider-image">
+                                <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
+                            </div>
                         </div>
                         <button class="slider-btn slider-btn-right">&gt;</button>
                     </div>
-
                     <h3>Deskripsi</h3>
-                    <p>Sebuah portofolio interaktif yang dirancang dengan antarmuka seperti terminal command-line. Proyek ini dibuat untuk menunjukkan kreativitas dan keahlian dalam frontend development dengan vanilla JavaScript.</p>
+                    <p>
+                        Sistem Rekognisi Pembelajaran Lampau (E-RPL) adalah proyek skripsi saya yang berhasil diimplementasikan secara nyata 
+                        di Universitas Trunojoyo Madura. Sistem ini mendukung proses <em>alih jenjang</em> dengan cara menyederhanakan asesmen 
+                        konversi mata kuliah dan pengalaman pendidikan mahasiswa. Salah satu fitur unggulannya adalah 
+                        <strong>rekomendasi konversi mata kuliah</strong> menggunakan metode 
+                        <em>Cosine Similarity</em> dan <em>Jaccard Similarity</em>, 
+                        sehingga proses asesmen menjadi lebih objektif dan efisien.
+                    </p>
+                    <p>
+                        Proyek ini menjadi puncak perjalanan akademik saya karena tidak hanya selesai sebagai skripsi, 
+                        tetapi juga benar-benar digunakan oleh PJM LPMPP UTM. Hal ini membuktikan bahwa hasil karya saya 
+                        dapat memberikan dampak nyata dan positif dalam dunia pendidikan.
+                    </p>
                     <h3>Teknologi Utama</h3>
                     <ul class="tech-list">
-                        <li>HTML5</li>
-                        <li>CSS3</li>
-                        <li>JavaScript (ES6)</li>
+                        <li>Laravel</li>
+                        <li>Bootstrap & CSS</li>
+                        <li>JavaScript (Frontend)</li>
+                        <li>MySQL (Database)</li>
+                        <li>Python (perhitungan similarity)</li>
                     </ul>
-                    <a href="#" class="project-link" target="_blank">Lihat Kode di GitHub</a>
+                    <h3>Kode Program</h3>
+                    <ul class="tech-list">
+                        <li>PHP</li>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                        <li>Python</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://www.figma.com/design/u88uOHgzNJAH5W9ViFhw0P/Hi-fi-RPL-Lintas-Jenjang?node-id=0-1&t=j1ot4ji2QRJVeKKR-1" class="project-link" target="_blank">Lihat Desain di Figma</a>
+                        <a href="https://github.com/rvanza453/Rekognisi-Pembelajaran-Lampau-Alih-Jenjang-UTM" class="project-link" target="_blank">Lihat Kode di GitHub</a>
+                        <a href="https://rpl-alihjenjang-utm.uinfaq.org/" class="project-link" target="_blank">Lihat Implementasi</a>
+                    </div>
                 </div>
             `
         }
