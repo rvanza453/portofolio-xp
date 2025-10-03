@@ -1,4 +1,4 @@
-/* Import Font Khas Windows XP */
+/* Import Font Windows XP */
 @import url('https://fonts.googleapis.com/css2?family=Tahoma:wght@400;700&display=swap');
 
 :root {
@@ -126,8 +126,6 @@ body {
     align-items: center;
 }
 
-/* GANTI SELURUH BLOK CSS TOMBOL ANDA DENGAN INI */
-
 /* Aturan umum untuk semua tombol */
 .title-bar-buttons button {
     width: 21px;
@@ -170,7 +168,7 @@ button.close {
     filter: brightness(0.9);
 }
 
-/* Class untuk window yang termaksimalkan */
+/* Class untuk window yang maximized */
 .window.maximized {
     top: 0 !important;
     left: 0 !important;
@@ -193,7 +191,7 @@ button.close {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* Trik untuk sentralisasi sempurna */
+    transform: translate(-50%, -50%);
     border: 4px solid #f3f3f3;
     border-top: 4px solid var(--xp-blue);
     border-radius: 50%;
@@ -209,7 +207,6 @@ button.close {
     100% { transform: rotate(360deg); }
 }
 
-/* Tambahkan di akhir file style.css */
 #taskbar-apps {
     display: flex;
     height: 100%;
@@ -245,7 +242,6 @@ button.close {
     margin-right: 5px;
 }
 
-/* Tambahkan di akhir style.css */
 
 .profile-container {
     padding: 10px;
@@ -347,9 +343,7 @@ button.close {
     color: #666;
 }
 
-/* ======================================= */
-/* === SKILL BARS (MY_ARSENAL) === */
-/* ======================================= */
+/*  SKILL BARS (MY_ARSENAL)  */
 
 .skill-bars-container {
     margin-top: 15px;
@@ -369,7 +363,7 @@ button.close {
 
 .bar-container {
     width: 100%;
-    background-color: #dcdcdc; /* Warna latar belakang bar */
+    background-color: #dcdcdc;
     border: 1px solid #a0a0a0;
     border-radius: 3px;
     overflow: hidden; /* Penting untuk radius di bar-fill */
@@ -379,9 +373,9 @@ button.close {
     height: 14px;
     background: linear-gradient(to bottom, var(--xp-blue-gradient-start), var(--xp-blue-gradient-end));
     border-radius: 2px;
-    width: 0%; /* Mulai dari 0% */
+    width: 0%;
     box-shadow: inset 1px 1px 2px rgba(255,255,255,0.3);
-    transition: width 1.5s ease-out; /* Kita ganti animasi dengan transisi */
+    transition: width 1.5s ease-out;
 }
 
 /* Animasi pengisian bar */
@@ -394,15 +388,13 @@ button.close {
     }
 }
 
-/* ======================================= */
-/* === EFEK KUNANG-KUNANG PIXEL (FIREFLY) === */
-/* ======================================= */
+/*  EFEK KUNANG-KUNANG PIXEL (FIREFLY)  */
 
 .firefly {
     position: absolute;
     left: 50%;
     top: 50%;
-    width: 5px; /* Ukuran kunang-kunang */
+    width: 5px; 
     height: 5px;
     background: #76f1ff; /* Warna cahaya utama */
     border-radius: 50%;
@@ -410,7 +402,7 @@ button.close {
                 0 0 10px #76f1ff,
                 0 0 20px #76f1ff,
                 0 0 40px #03a9f4;
-    animation: animate-firefly 2s linear infinite; /* Animasi dasar */
+    animation: animate-firefly 2s linear infinite;
 }
 
 /* Membuat setiap kunang-kunang memiliki animasi & posisi yang berbeda */
@@ -435,9 +427,9 @@ button.close {
     height: 4px;
 }
 .firefly:nth-child(5) {
-    animation-name: animate-firefly-1; /* Menggunakan kembali path animasi */
+    animation-name: animate-firefly-1;
     animation-duration: 55s;
-    animation-delay: -10s; /* Mulai dari titik berbeda */
+    animation-delay: -10s;
 }
 .firefly:nth-child(6) {
     animation-name: animate-firefly-3;
@@ -447,7 +439,6 @@ button.close {
 
 
 /* Keyframes untuk path terbang kunang-kunang */
-/* Ini adalah "jalur" terbang yang sudah ditentukan */
 
 @keyframes animate-firefly-1 {
     0%   { transform: translate(0, 0) scale(1); opacity: 0.5; }
@@ -482,9 +473,9 @@ button.close {
 /* --- Style untuk Konten File Explorer --- */
 .content.file-explorer {
     display: flex;
-    flex-wrap: wrap; /* Agar ikon pindah ke baris baru jika tidak cukup */
-    align-content: flex-start; /* Ikon mulai dari atas */
-    gap: 10px; /* Jarak antar ikon */
+    flex-wrap: wrap; 
+    align-content: flex-start;
+    gap: 10px;
     background-color: #fff;
     padding: 10px;
 }
