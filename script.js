@@ -649,6 +649,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // Logika untuk auto-maximize di layar mobile
+        if (window.innerWidth <= 480) {
+            maximizeBtn.click();
+        }
+
         minimizeBtn.addEventListener('click', () => {
             newWindow.style.display = 'none';
         });
