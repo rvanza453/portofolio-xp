@@ -14,10 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
         volumeBtn.addEventListener('click', () => {
             if (audio.paused) {
                 audio.play();
-                volumeBtn.innerHTML = '🔊'; // Ganti ikon menjadi speaker aktif
+                volumeBtn.innerHTML = '🔊';
             } else {
                 audio.pause();
-                volumeBtn.innerHTML = '🔇'; // Ganti ikon menjadi speaker mute
+                volumeBtn.innerHTML = '🔇';
             }
         });
     }
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `
         },
-        // Anda bisa menerapkan struktur slider yang sama untuk proyek lain
+        
         'project-obe': {
             title: "Sistem Outcome Based Education (OBE)",
             icon: "pie-chart.png",
@@ -288,8 +288,6 @@ document.addEventListener('DOMContentLoaded', () => {
     //     // Tambahkan proyek lainnya di sini
     // }
 
-
-    // Data untuk aplikasi/ikon di desktop
     const apps = {
         'my-computer': {
             title: "Tentang Saya",
@@ -409,7 +407,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'my-documents': {
             title: "Proyek Saya",
             icon: "my-documents.png",
-            content: `<p>Memuat proyek...</p>` // Konten ini akan diganti secara dinamis
+            content: `<p>Memuat proyek...</p>`
         },
         'internet-explorer': {
             title: "Kontak Saya",
@@ -488,9 +486,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function openWindow(appId) {
-        // --- MODIFIKASI: Mengambil data dari 'apps' atau 'projects' ---
         const appData = apps[appId] || projects[appId];
-        if (!appData) return; // Hentikan jika data tidak ditemukan
+        if (!appData) return;
 
         const taskbarApps = document.getElementById('taskbar-apps');
 
@@ -517,9 +514,9 @@ document.addEventListener('DOMContentLoaded', () => {
         newWindow.querySelector('.title').textContent = appData.title;
         const contentArea = newWindow.querySelector('.content');
 
-        // --- MODIFIKASI: Logika khusus untuk 'my-documents' dan lainnya ---
+        // Logika khusus untuk 'my-documents' dan lainnya ---
         if (appId === 'my-documents') {
-            contentArea.innerHTML = ''; // Kosongkan konten default
+            contentArea.innerHTML = '';
             contentArea.classList.add('file-explorer-view'); // Tambah kelas untuk styling
 
             for (const projectId in projects) {
@@ -540,7 +537,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 contentArea.appendChild(projectIcon);
             }
         } else {
-            // Ini adalah logika asli Anda untuk semua window lain
+            // Ini adalah logika asli untuk semua window lain
             contentArea.innerHTML = appData.content;
         }
 
@@ -567,8 +564,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
             
             // Panggil sekali saat window dibuka
-            setTimeout(updateButtonVisibility, 100); 
-            // Cek lagi saat window di-resize (jika diimplementasikan) atau konten berubah
+            setTimeout(updateButtonVisibility, 100); // Delay untuk memastikan layout sudah benar
             sliderWrapper.addEventListener('scroll', updateButtonVisibility);
 
 
@@ -580,7 +576,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 sliderWrapper.scrollBy({ left: -itemWidth, behavior: 'smooth' });
             });
 
-            // --- LOGIKA UNTUK LIGHTBOX (FULLSCREEN) ---
+            // --- LOGIKA UNTUK (FULLSCREEN) ---
             items.forEach(item => {
                 const fullscreenBtn = item.querySelector('.fullscreen-btn');
                 const image = item.querySelector('.slider-image');
@@ -591,9 +587,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // --- LOGIKA ANIMASI SKILL BAR ON-SCROLL ---
+        // LOGIKA ANIMASI SKILL BAR
         // Logika ini tetap di sini dan hanya akan berjalan jika window yang dibuka
-        // adalah 'my-computer' karena hanya di sana ada elemen fieldset yang sesuai.
         const legends = newWindow.querySelectorAll('legend');
         let arsenalSection = null;
         for (const legend of legends) {
@@ -625,7 +620,6 @@ document.addEventListener('DOMContentLoaded', () => {
             observer.observe(arsenalSection);
         }
 
-        // --- LOGIKA TOMBOL WINDOW (TETAP SAMA) ---
         const closeBtn = newWindow.querySelector('.close');
         const maximizeBtn = newWindow.querySelector('.maximize');
         const minimizeBtn = newWindow.querySelector('.minimize');
@@ -670,7 +664,7 @@ document.addEventListener('DOMContentLoaded', () => {
         makeDraggable(newWindow);
         desktop.appendChild(newWindow);
         
-        // --- MEMBUAT TOMBOL DI TASKBAR (TETAP SAMA) ---
+        // MEMBUAT TOMBOL DI TASKBAR
         const taskbarButton = document.createElement('button');
         taskbarButton.className = 'taskbar-btn active';
         taskbarButton.dataset.appId = appId;
@@ -692,14 +686,13 @@ document.addEventListener('DOMContentLoaded', () => {
         taskbarApps.appendChild(taskbarButton);
     }
 
-    // --- FUNGSI DRAGGABLE & JAM (TETAP SAMA) ---
+    // FUNGSI DRAGGABLE & JAM
     function makeDraggable(element) {
         const titleBar = element.querySelector('.title-bar');
         let isDragging = false;
         let offsetX, offsetY;
 
         titleBar.addEventListener('mousedown', (e) => {
-            // --- MODIFIKASI KECIL: Jangan drag saat maximized ---
             if (element.classList.contains('maximized')) return;
             isDragging = true;
             offsetX = e.clientX - element.offsetLeft;
@@ -719,7 +712,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 isDragging = false;
                 // Kembalikan cursor ke 'move' hanya jika tidak maximized
                 if (!element.classList.contains('maximized')) {
-                    element.style.cursor = 'move'; // Seharusnya titleBar, tapi element juga bisa
+                    element.style.cursor = 'move';
                     titleBar.style.cursor = 'move';
                 } else {
                      titleBar.style.cursor = 'default';

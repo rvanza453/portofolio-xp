@@ -25,6 +25,11 @@ body {
     height: calc(100vh - 30px); /* Tinggi layar dikurangi tinggi taskbar */
     position: relative;
     padding: 10px;
+    display: flex; /* Menambahkan flexbox untuk mengatur ikon */
+    flex-direction: column; /* Mengatur ikon secara vertikal */
+    flex-wrap: wrap; /* Memungkinkan ikon "turun" jika tidak muat */
+    align-content: flex-start;
+    gap: 5px; /* Memberi sedikit jarak antar ikon */
 }
 
 .desktop-icon {
@@ -211,7 +216,14 @@ button.close {
     display: flex;
     height: 100%;
     margin-left: 10px;
+    overflow-x: auto; /* Memungkinkan scroll jika taskbar penuh */
+    -ms-overflow-style: none;  /* Sembunyikan scrollbar di IE/Edge */
+    scrollbar-width: none; /* Sembunyikan scrollbar di Firefox */
 }
+#taskbar-apps::-webkit-scrollbar {
+    display: none; /* Sembunyikan scrollbar di Chrome/Safari */
+}
+
 
 .taskbar-btn {
     background: #2a73d7;
@@ -225,6 +237,7 @@ button.close {
     align-items: center;
     cursor: pointer;
     box-shadow: inset 1px 1px 0px rgba(255,255,255,0.4);
+    flex-shrink: 0; /* Mencegah tombol menyusut */
 }
 
 .taskbar-btn.active {
@@ -343,7 +356,7 @@ button.close {
     color: #666;
 }
 
-/*  SKILL BARS (MY_ARSENAL)  */
+/* SKILL BARS (MY_ARSENAL)  */
 
 .skill-bars-container {
     margin-top: 15px;
@@ -388,7 +401,7 @@ button.close {
     }
 }
 
-/*  EFEK KUNANG-KUNANG PIXEL (FIREFLY)  */
+/* EFEK KUNANG-KUNANG PIXEL (FIREFLY)  */
 
 .firefly {
     position: absolute;
@@ -703,15 +716,6 @@ button.close {
     border-bottom: 1px solid #ccc;
 }
 
-.profile-pic {
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    border: 2px solid #fff;
-    box-shadow: 0 0 5px rgba(0,0,0,0.3);
-    margin-right: 15px;
-}
-
 .card-header-text h2 {
     margin: 0;
     font-size: 18px;
@@ -766,4 +770,102 @@ button.close {
     width: 20px;
     height: 20px;
     margin-right: 10px;
+}
+
+/* --- Responsive Design --- */
+
+/* Untuk layar tablet dan di bawahnya (lebar maks 768px) */
+@media (max-width: 768px) {
+    .window {
+        /*
+        Gunakan lebar viewport dan pastikan tidak lebih dari 500px.
+        calc() memastikan ada sedikit jarak dari tepi layar.
+        */
+        width: calc(100vw - 20px);
+        max-width: 500px;
+        /* Biarkan tinggi menyesuaikan konten, dengan tinggi maksimal */
+        height: auto;
+        max-height: calc(100vh - 50px);
+        top: 10px !important;
+        left: 10px !important;
+    }
+
+    .profile-header {
+        flex-direction: column; /* Ubah layout header profil menjadi vertikal */
+        text-align: center;
+    }
+
+    .profile-pic {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr; /* Ubah grid keahlian menjadi 1 kolom */
+    }
+
+    .taskbar-btn {
+        min-width: auto; /* Biarkan lebar tombol taskbar menyesuaikan */
+        padding: 2px 8px;
+    }
+
+    .taskbar-btn span {
+        display: none; /* Sembunyikan teks pada tombol taskbar agar lebih hemat tempat */
+    }
+}
+
+/* Untuk layar ponsel (lebar maks 480px) */
+@media (max-width: 480px) {
+    #desktop {
+        padding: 5px;
+        /* Mengatur agar ikon bisa muat lebih banyak per baris di layar sempit */
+        flex-direction: row;
+        align-content: flex-start;
+        height: auto; /* Biarkan tinggi desktop menyesuaikan jumlah ikon */
+    }
+
+    .desktop-icon {
+        width: 70px; /* Perkecil ikon */
+        font-size: 10px;
+        margin-bottom: 15px;
+    }
+
+    .desktop-icon img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .window {
+        /* Paksa window memenuhi layar, mirip mode maximized */
+        top: 5px !important;
+        left: 5px !important;
+        width: calc(100vw - 10px);
+        height: calc(100vh - 45px);
+    }
+    
+    .profile-title h1 {
+        font-size: 18px; /* Kecilkan font judul */
+    }
+    
+    #start-button span {
+        display: none; /* Sembunyikan teks "start" untuk menghemat ruang */
+    }
+    
+    #start-button {
+        padding: 2px 10px;
+        border-radius: 0 10px 10px 0;
+    }
+    
+    .firefly {
+        display: none; /* Sembunyikan kunang-kunang di mobile untuk performa */
+    }
+
+    .slider-item {
+        width: 150px; /* Perkecil item slider agar lebih banyak terlihat */
+        height: 94px;
+    }
+
+    .slider-container.portrait-mode .slider-item {
+        height: 140px;
+    }
 }
