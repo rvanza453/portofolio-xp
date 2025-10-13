@@ -213,8 +213,86 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
             `
-        }
+        },
+
+        'project-ects': {
+            title: "Sistem Informasi PenyeTAraan Rekognisi Akademik (SITARA)",
+            icon: "graduate.png",
+            content: `
+                <div class="project-detail">
+                    <h2>Sistem Informasi PenyeTAraan Rekognisi Akademik (SITARA)</h2>
+                    <p><strong>Klien:</strong> Dr. I Gede Susrama Mas Diyasa, S.T., M.T., IPU</p>
+                    
+                    <div class="slider-container">
+                        <button class="slider-btn slider-btn-left" style="display: none;">&lt;</button>
+                        <div class="slider-wrapper">
+                            <div class="slider-item">
+                                <img src="./assets/images/sitara/landing_page.png" alt="Screenshot SITARA landing page" class="slider-image">
+                                <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
+                            </div>
+                             <div class="slider-item">
+                                <img src="./assets/images/sitara/login.png" alt="Screenshot SITARA login" class="slider-image">
+                                <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
+                            </div>
+                             <div class="slider-item">
+                                <img src="./assets/images/sitara/dashboard_admin.png" alt="Screenshot SITARA dashboard admin" class="slider-image">
+                                <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
+                            </div>
+                             <div class="slider-item">
+                                <img src="./assets/images/sitara/manajemen_matkul.png" alt="Screenshot SITARA manajemen matkul" class="slider-image">
+                                <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
+                            </div>
+                             <div class="slider-item">
+                                <img src="./assets/images/sitara/tambah_matkul.png" alt="Screenshot SITARA input matkul" class="slider-image">
+                                <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
+                            </div>
+                             <div class="slider-item">
+                                <img src="./assets/images/sitara/input_transkrip_mhs.png" alt="Screenshot SITARA input transkrip mahasiswa" class="slider-image">
+                                <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
+                            </div>
+                             <div class="slider-item">
+                                <img src="./assets/images/sitara/manajemen_admin.png" alt="Screenshot SITARA manajemen admin" class="slider-image">
+                                <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
+                            </div>
+                             <div class="slider-item">
+                                <img src="./assets/images/sitara/dashboard_mhs.png" alt="Screenshot SITARA dashboard mahasiswa" class="slider-image">
+                                <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
+                            </div>
+                             <div class="slider-item">
+                                <img src="./assets/images/sitara/edit_profil_mhs.png" alt="Screenshot SITARA edit profil mahasiswa" class="slider-image">
+                                <div class="fullscreen-btn" title="Perbesar gambar">⛶</div>
+                            </div>
+                        </div>
+                        <button class="slider-btn slider-btn-right">&gt;</button>
+                    </div>
+                    <h3>Deskripsi</h3>
+                    <p>
+                        SITARA adalah sebuah sistem berbasis web yang berfungsi sebagai engine untuk melakukan konversi kredit akademik ECTS 
+                        secara otomatis. Proyek ini bertujuan untuk menggantikan proses manual yang memakan waktu dengan sebuah aplikasi yang 
+                        dapat mengimplementasikan formula dan aturan konversi yang kompleks secara efisien dan akurat.
+                    </p>
+                    <p>
+                        Fokus utama pengembangan adalah membangun logika backend yang efektif untuk memproses data transkrip nilai berdasarkan 
+                        aturan penyetaraan yang dapat dikonfigurasi. Sistem ini dirancang untuk menjadi alat bantu bagi administrator akademik, 
+                        memastikan setiap hasil konversi dapat dipertanggungjawabkan dan sesuai dengan standar yang berlaku.
+                    </p>
+
+                    <h3>Teknologi & Metodologi</h3>
+                    <ul class="tech-list">
+                        <li><strong>Backend:</strong> Laravel (PHP)</li>
+                        <li><strong>Frontend:</strong> Blade, Tailwind CSS, Vite</li>
+                        <li><strong>Database:</strong> MySQL</li>
+                    </ul>
+
+                    <div class="project-links">
+                        <a href="https://github.com/rvanza453/sistem_konversi_ects" class="project-link" target="_blank">Lihat Kode di GitHub</a>
+                    </div>
+                </div>
+            `
+        },
     };
+
+
     // const projects = {
     //     'project-erpl': {
     //         title: "Sistem E-RPL Universitas Trunojoyo",
