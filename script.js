@@ -216,11 +216,11 @@ document.addEventListener('DOMContentLoaded', () => {
         },
 
         'project-ects': {
-            title: "Sistem Informasi PenyeTAraan Rekognisi Akademik (SITARA)",
+            title: "Sistem Informasi Penyetaraan Rekognisi Akademik (SITARA)",
             icon: "graduate.png",
             content: `
                 <div class="project-detail">
-                    <h2>Sistem Informasi PenyeTAraan Rekognisi Akademik (SITARA)</h2>
+                    <h2>Sistem Informasi Penyetaraan Rekognisi Akademik (SITARA)</h2>
                     <p><strong>Klien:</strong> Dr. I Gede Susrama Mas Diyasa, S.T., M.T., IPU</p>
                     
                     <div class="slider-container">
@@ -827,4 +827,5 @@ document.addEventListener('DOMContentLoaded', () => {
             lightboxOverlay.classList.add('hidden');
         }
     });
+
 });
